@@ -1,0 +1,17 @@
+extends ../../index.pug
+
+block content
+    div.form
+        div.form__container
+            h2.form__title Вход
+            div.input__container
+                label.form__label(for='login') Логин
+                input.form__input(type='text' name='login' id='login' placeholder='Логин')
+            div.input__container
+                label.form__label(for='password') Пароль
+                input.form__input(type='password' name='password' id='password' placeholder='Пароль')
+        div.buttons
+            button.form__submit-button Авторизоваться
+            a.form__link(href='~static/index.pug') Нет аккаунта?
+append scripts
+    script(type="module", src="./login.js")

@@ -1,7 +1,32 @@
 extends ../../index.pug
 
 block content
-    div.register register
-
+    div.form
+        div.form__container
+            h2.form__title Регистрация
+            div.input__container
+                label.form__label(for='email') Почта
+                input.form__input(type='email' name='email' id='email' placeholder='Почта')
+            div.input__container
+                label.form__label(for='login') Логин
+                input.form__input(type='text' name='login' id='login' placeholder='Логин')
+            div.input__container
+                label.form__label(for='first_name') Имя
+                input.form__input(type='text' name='first_name' id='first_name' placeholder='Имя')
+            div.input__container
+                label.form__label(for='second_name') Фамилия
+                input.form__input(type='text' name='second_name' id='second_name' placeholder='Фамилия')
+            div.input__container
+                label.form__label(for='phone') Номер телефона
+                input.form__input(type='text' name='phone' id='phone' placeholder='Номер телефона')
+            div.input__container
+                label.form__label(for='password') Пароль
+                input.form__input(type='password' name='password' id='password' placeholder='Пароль')
+            div.input__container
+                label.form__label(for='password_confirm') Пароль (ещё раз)
+                input.form__input(type='password' name='password_confirm' id='password_confirm' placeholder='Пароль (ещё раз)')
+        div.buttons
+            button.form__submit-button Зарегистрироваться
+            a.form__link(href='~static/index.pug') Войти
 append scripts
     script(type="module", src="./register.js")

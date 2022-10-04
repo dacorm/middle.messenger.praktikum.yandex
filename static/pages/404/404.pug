@@ -1,0 +1,11 @@
+extends ../../index.pug
+
+block content
+    div.content
+        div.info
+            h1.info__title 404
+            p.info__subtitle Не туда попали
+            a.info__link(href='~static/index.pug') Назад к чатам
+
+append scripts
+    script(type="module", src="./404.js")
