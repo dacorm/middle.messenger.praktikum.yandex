@@ -6,7 +6,11 @@ html(lang="en")
          title Messenger
          link(rel="stylesheet" href="~/static/main.scss")
      body
+         nav
+             ul.index-main-menu
+                 li
+                     a(href='~static/pages/register/register.pug') Register
          main
-             div#root.root
+             block content
          block scripts
-             script(type="module", src="/static/main.js")
+             script(type="module", src="~/static/main.js")
