@@ -1,4 +1,4 @@
-.form {
+.register-form {
   width: 340px;
   height: 615px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
@@ -26,7 +26,7 @@
     align-items: flex-start;
     flex-direction: column;
 
-    .form__label {
+    .label {
       font-style: normal;
       font-weight: 500;
       font-size: 9px;
@@ -36,7 +36,7 @@
       color: #999999;
     }
 
-    .form__input {
+    .input {
       border-bottom: 1px solid #3369F3;
       padding-bottom: 7px;
 
