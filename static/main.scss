@@ -1,7 +1,17 @@
-.root {
-  font-size: 24px;
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/inter/Inter-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-nav {
-  height: 100px;
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/inter/Inter-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
 }
