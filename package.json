@@ -1,0 +1,29 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "---",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel static/index.pug",
+    "build": "parcel build static/index.pug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dacorm/middle.messenger.praktikum.yandex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dacorm/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/dacorm/middle.messenger.praktikum.yandex#readme",
+  "devDependencies": {
+    "@parcel/transformer-pug": "^2.7.0",
+    "@parcel/transformer-sass": "^2.7.0",
+    "parcel": "^2.7.0",
+    "pug": "^3.0.2",
+    "sass": "^1.55.0"
+  }
+}
