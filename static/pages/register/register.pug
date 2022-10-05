@@ -11,7 +11,7 @@ block content
             +styledInput('Фамилия', 'Фамилия')(name='second_name', id='second_name', type='text', for='second_name')
             +styledInput('Номер телефона', 'Номер телефона')(name='phone', id='phone', type='phone', for='phone')
             +styledInput('Пароль', 'Пароль')(name='password', id='password', type='password', for='password')
-            +styledInput('Пароль', 'Пароль (ещё раз)')(name='password_confirm', id='password_confirm', type='password', for='password_confirm')
+            +styledInput('Пароль', 'Пароль (ещё раз)', 'Пароли не совпадают')(name='password_confirm', id='password_confirm', type='password', for='password_confirm')
         div.buttons
             button.register-form__submit-button Зарегистрироваться
             a.register-form__link(href='~static/pages/login/login.pug') Войти
