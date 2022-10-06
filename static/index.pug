@@ -1,0 +1,30 @@
+html(lang="en")
+     head
+         meta(charset="UTF-8")
+         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+         meta(http-equiv="X-UA-Compatible", content="ie=edge")
+         title Messenger
+         link(rel="stylesheet" href="~/static/main.scss")
+     body
+         main
+             block content
+                 nav
+                     ul.index-main-menu
+                         li
+                             a(href='~static/pages/register/register.pug') Register
+                         li
+                             a(href='~static/pages/login/login.pug') Login
+                         li
+                             a(href='~static/pages/404/404.pug') 404
+                         li
+                             a(href='~static/pages/500/500.pug') 500
+                         li
+                             a(href='~static/pages/chats/chats.pug') chats
+                         li
+                             a(href='~static/pages/userSettings/userSettings.pug') settings
+                         li
+                             a(href='~static/pages/changePassword/changePassword.pug') change password
+                         li
+                             a(href='~static/pages/changeAvatar/changeAvatar.pug') change avatar
+         block scripts
+             script(type="module", src="~/static/main.js")

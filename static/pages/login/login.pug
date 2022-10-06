@@ -1,0 +1,14 @@
+extends ../../index.pug
+include ../../components/input/input.pug
+
+block content
+    div.login-form
+        div.login-form__container
+            h2.login-form__title Вход
+            +styledInput('Логин', 'Логин')(name='login', id='login', type='text', for='login')
+            +styledInput('Пароль', 'Пароль')(name='password', id='password', type='password', for='password')
+        div.buttons
+            button.login-form__submit-button Авторизоваться
+            a.login-form__link(href='~static/pages/register/register.pug') Нет аккаунта?
+append scripts
+    script(type="module", src="./login.js")

@@ -1,0 +1,9 @@
+extends ../../index.pug
+include ../../components/info/info.pug
+
+block content
+    div.content
+        +info('500', 'Мы уже фиксим')
+
+append scripts
+    script(type="module", src="./500.js")
