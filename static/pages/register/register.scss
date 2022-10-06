@@ -1,3 +1,6 @@
+@import "../../styles/variables";
+
+
 .register-form {
   width: 340px;
   height: 615px;
@@ -48,7 +51,7 @@
     }
 
     .input {
-      border-bottom: 1px solid #3369F3;
+      border-bottom: 1px solid $color_blue;
       padding-bottom: 7px;
 
       &::placeholder {
@@ -74,7 +77,7 @@
     color: #FFFFFF;
     width: 280px;
     height: 37px;
-    background: #3369F3;
+    background: $color_blue;
     border-radius: 8px;
     padding: 12px 70px;
   }
@@ -87,7 +90,7 @@
 
     text-align: center;
     margin-top: 14px;
-    color: #3369F3;
+    color: $color_blue;
     padding-bottom: 30px;
   }
 
