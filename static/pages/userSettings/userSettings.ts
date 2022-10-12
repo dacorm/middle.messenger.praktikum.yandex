@@ -1,1 +1,1 @@
-import './userSettings.scss'
+import './userSettings.scss';

@@ -5,7 +5,10 @@
   "scripts": {
     "start": "parcel build ./static/index.pug && node ./server.js",
     "dev": "parcel ./static/index.pug --open",
-    "build": "parcel build ./static/index.pug"
+    "build": "parcel build ./static/index.pug",
+    "lint:css": "stylelint-config-prettier-check",
+    "lint:ts": "eslint --ext .ts ./",
+    "lint:ts:fix": "eslint --ext .ts ./ --fix"
   },
   "repository": {
     "type": "git",
@@ -21,9 +24,20 @@
   "devDependencies": {
     "@parcel/transformer-pug": "^2.7.0",
     "@parcel/transformer-sass": "^2.7.0",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "eslint": "^8.25.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.1",
+    "eslint-plugin-react": "^7.31.10",
     "parcel": "^2.7.0",
     "pug": "^3.0.2",
     "sass": "^1.55.0",
+    "stylelint": "^14.13.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-sass-guidelines": "^9.0.1",
+    "stylelint-config-standard": "^28.0.0",
     "typescript": "^4.8.4"
   },
   "dependencies": {
