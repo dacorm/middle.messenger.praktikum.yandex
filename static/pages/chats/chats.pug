@@ -40,7 +40,7 @@ block content
                                 p.message__message-text Друзья, у меня для вас особенный выпуск новостей!...
                                 div.message__unread
                                     p.message__unread-text 4
-                    div.message
+                    div.message.message_active
                         img.message__avatar(src='../../assets/images/Ellipse.png', alt='Аватарка пользователя')
                         div.message__main
                             div.message__message
@@ -95,6 +95,15 @@ block content
                     p.screen__chat-user-username Вадим
                 button.screen__chat-button
                     img.screen__chat-button-image(src='../../assets/images/additional.svg' alt='Дополнительно')
+            p.screen__chat-date 19 июня
+            div.screen__chat-message
+                p.screen__chat-message-text Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
+                p.screen__chat-message-time 12:00
+            div.screen__chat-message.screen__chat-message_image
+                img.screen__chat-message-image(src='../../assets/images/camera.png' alt='Фотография в сообщении')
+            div.screen__chat-message.screen__chat-message_my
+                p.screen__chat-message-text Круто!
+                p.screen__chat-message-time 12:00
             div.screen__chat-input
                 img.screen__chat-input-add(src='../../assets/images/add.svg' alt='Прикрепить')
                 input.screen__chat-input-input(type='text' placeholder='Сообщение')
