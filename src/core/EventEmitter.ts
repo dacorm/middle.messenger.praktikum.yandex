@@ -1,44 +1,46 @@
-import {IEventEmitter} from "../assets/interfaces";
+import { IEventEmitter } from '../assets/interfaces';
 
 export default class EventEmitter implements IEventEmitter {
-    protected _node: HTMLElement;
-    private events = new Set();
-    get node(): HTMLElement {
-        return this._node;
-    }
+  protected _node: HTMLElement;
 
-    set node(node: HTMLElement) {
-        this._node = node;
-    }
+  private events = new Set();
 
-    constructor(element?: HTMLElement) {
-        if (element) {
-            this.node = element;
-        }
-    }
+  get node(): HTMLElement {
+    return this._node;
+  }
 
-    add(eventName: string, callback: (e: Event) => void): void {
-        this.checkNode();
-        this._node.addEventListener(eventName, callback);
-        this.events.add({ eventName, callback });
-    }
+  set node(node: HTMLElement) {
+    this._node = node;
+  }
 
-    remove(eventName: string, callback: (e: Event) => void): void {
-        this.checkNode();
-        this._node.removeEventListener(eventName, callback);
-        this.events.delete({ eventName, callback });
+  constructor(element?: HTMLElement) {
+    if (element) {
+      this.node = element;
     }
+  }
 
-    clear() {
-        this.events.forEach(({ eventName, callback }) => {
-            this._node.removeEventListener(eventName, callback);
-        });
-        this.events = new Set();
-    }
+  add(eventName: string, callback: (e: Event) => void): void {
+    this.checkNode();
+    this._node.addEventListener(eventName, callback);
+    this.events.add({ eventName, callback });
+  }
 
-    private checkNode() {
-        if (!this._node) {
-            throw new Error("No node");
-        }
+  remove(eventName: string, callback: (e: Event) => void): void {
+    this.checkNode();
+    this._node.removeEventListener(eventName, callback);
+    this.events.delete({ eventName, callback });
+  }
+
+  clear() {
+    this.events.forEach(({ eventName, callback }) => {
+      this._node.removeEventListener(eventName, callback);
+    });
+    this.events = new Set();
+  }
+
+  private checkNode() {
+    if (!this._node) {
+      throw new Error('No node');
     }
+  }
 }

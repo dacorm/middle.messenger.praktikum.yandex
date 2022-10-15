@@ -22,7 +22,11 @@ module.exports = {
     ],
     rules: {
         'no-unused-vars': 'warn',
-
+        'no-underscore-dangle': 'off',
+        'import/extensions': 'off',
+        'import/no-unresolved': 'warn',
+        'no-param-reassign': 'warn',
+        'class-methods-use-this': 'warn',
         'max-len': ['error', { ignoreComments: true, code: 100 }],
     },
 };
