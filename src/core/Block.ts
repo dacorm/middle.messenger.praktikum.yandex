@@ -28,7 +28,7 @@ export default abstract class Block implements IComponent {
 
   protected _proplist: Proplist = [];
 
-  get proplist(): Proplist {
+  protected get proplist(): Proplist {
     return this._proplist;
   }
 
@@ -126,8 +126,8 @@ export default abstract class Block implements IComponent {
       const html = this.render();
       const divElement = document.createElement('div');
       divElement.innerHTML = html.trim();
-      divElement.querySelectorAll('[data-child]').forEach((el) => {
-        const name = el.getAttribute('data-child');
+      divElement.querySelectorAll('[data-props]').forEach((el) => {
+        const name = el.getAttribute('data-props');
         if (this.props.children && name) {
           // @ts-ignore
           el.replaceWith(this.props.children[name]);
@@ -159,7 +159,7 @@ export default abstract class Block implements IComponent {
       }
     }
 
-    customiseComponent() {
+    protected customiseComponent() {
 
     }
 
