@@ -11,14 +11,13 @@ type Proplist = {
 }[];
 
 enum EVENTS {
-  INIT = "init",
-  FLOW_CDM = "flow:component-did-mount",
-  FLOW_CDU = "flow:component-did-update",
-  FLOW_RENDER = "flow:render",
+  INIT = 'init',
+  FLOW_CDM = 'flow:component-did-mount',
+  FLOW_CDU = 'flow:component-did-update',
+  FLOW_RENDER = 'flow:render',
 }
 
 export default abstract class Block implements Component {
-
   protected props: ComponentProps;
 
   protected eventBus: () => EventBus;

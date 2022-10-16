@@ -1,5 +1,5 @@
-import RegistrationPage from "./RegistrationPage";
+import RegistrationPage from './RegistrationPage';
 
 export {
-    RegistrationPage
-}
+  RegistrationPage,
+};

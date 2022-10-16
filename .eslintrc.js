@@ -25,6 +25,8 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'import/extensions': 'off',
         'import/no-unresolved': 'warn',
+        'import/prefer-default-export': 'off',
+        'no-shadow': 'warn',
         'no-param-reassign': 'warn',
         'class-methods-use-this': 'warn',
         'max-len': ['error', { ignoreComments: true, code: 100 }],

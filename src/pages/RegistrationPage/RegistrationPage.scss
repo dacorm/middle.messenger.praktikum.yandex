@@ -28,42 +28,6 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-
-    .span {
-      padding: 7px 0 0 0;
-      height: 16px;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 8px;
-      line-height: 8px;
-
-      color: #FF2F2F
-    }
-
-    .label {
-      font-style: normal;
-      font-weight: 500;
-      font-size: 9px;
-      line-height: 9px;
-
-
-      color: #999999;
-    }
-
-    .input {
-      border-bottom: 1px solid $color_blue;
-      padding-bottom: 7px;
-
-      &::placeholder {
-        font-style: normal;
-        font-weight: 500;
-        font-size: 13px;
-        line-height: 13px;
-
-
-        color: #999999;
-      }
-    }
   }
 
   &__link {

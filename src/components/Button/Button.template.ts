@@ -1,1 +1,1 @@
-export default `button #{child}`
+export default 'button #{child}';

@@ -13,7 +13,7 @@ ul.index-main-menu
                          li
                              a(href='~static/pages/userSettings/userSettings.pug') settings
                          li
-                             a(href='~static/pages/changePassword/changePassword.pug') change password
+                             a(href='~static/pages/changePassword/changePassword.pug') change pass
                          li
                              a(href='~static/pages/changeAvatar/changeAvatar.pug') change avatar
-`
+`;

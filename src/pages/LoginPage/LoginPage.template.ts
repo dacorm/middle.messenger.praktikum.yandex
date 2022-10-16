@@ -7,4 +7,4 @@ div.login-form
         div.buttons
             button.form__submit-button Авторизоваться
             a.login-form__link Нет аккаунта?
-`
+`;

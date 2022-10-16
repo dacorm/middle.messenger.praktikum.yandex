@@ -4,8 +4,8 @@ import { ComponentProps } from '../../shared/interfaces';
 import './RegistrationPage.scss';
 import template from './RegistrationPage.template';
 import { Input } from '../../components/Input';
-import {renderInDom} from "../../shared/utils";
-import { LoginPage } from "../LoginPage";
+import { renderInDom } from '../../shared/utils';
+import { LoginPage } from '../LoginPage';
 
 export default class RegistrationPage extends Block {
   constructor(props: ComponentProps) {
@@ -108,14 +108,14 @@ export default class RegistrationPage extends Block {
 
     const link: HTMLLinkElement = (
         this
-            .node
-            .querySelector('a.register-form__link') as HTMLLinkElement
-    )
+          .node
+          .querySelector('a.register-form__link') as HTMLLinkElement
+    );
 
     if (link) {
       link.addEventListener('click', () => {
         renderInDom('#root', new LoginPage({}));
-      })
+      });
     }
   }
 }

@@ -1,5 +1,5 @@
-import ErrorPage from "./ErrorPage";
+import ErrorPage from './ErrorPage';
 
 export {
-    ErrorPage
-}
+  ErrorPage,
+};
