@@ -1,12 +1,14 @@
 import { compile } from 'pug';
 import Block from '../../core/Block';
-import { IComponentProps } from '../../assets/interfaces';
+import { ComponentProps } from '../../shared/interfaces';
 import './RegistrationPage.scss';
 import template from './RegistrationPage.template';
-import Input from '../../components/Input';
+import { Input } from '../../components/Input';
+import {renderInDom} from "../../shared/utils";
+import { LoginPage } from "../LoginPage";
 
 export default class RegistrationPage extends Block {
-  constructor(props: IComponentProps) {
+  constructor(props: ComponentProps) {
     const emailInput = new Input({
       placeholder: 'Почта',
       text: 'Почта',
@@ -102,6 +104,18 @@ export default class RegistrationPage extends Block {
         const formData = new FormData(form);
         console.log(Object.fromEntries(formData.entries()));
       });
+    }
+
+    const link: HTMLLinkElement = (
+        this
+            .node
+            .querySelector('a.register-form__link') as HTMLLinkElement
+    )
+
+    if (link) {
+      link.addEventListener('click', () => {
+        renderInDom('#root', new LoginPage({}));
+      })
     }
   }
 }

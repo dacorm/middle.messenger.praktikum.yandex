@@ -1,5 +1,5 @@
 import { v4 } from 'uuid';
-import { IComponent, IComponentProps } from '../assets/interfaces';
+import { Component, ComponentProps } from '../shared/interfaces';
 import EventEmitter from './EventEmitter';
 import EventBus from './EventBus';
 
@@ -10,15 +10,16 @@ type Proplist = {
     isValue?: boolean;
 }[];
 
-export default abstract class Block implements IComponent {
-  static EVENTS = {
-    INIT: 'init',
-    FLOW_CDM: 'flow:component-did-mount',
-    FLOW_CDU: 'flow:component-did-update',
-    FLOW_RENDER: 'flow:render',
-  };
+enum EVENTS {
+  INIT = "init",
+  FLOW_CDM = "flow:component-did-mount",
+  FLOW_CDU = "flow:component-did-update",
+  FLOW_RENDER = "flow:render",
+}
 
-  protected props: IComponentProps;
+export default abstract class Block implements Component {
+
+  protected props: ComponentProps;
 
   protected eventBus: () => EventBus;
 
@@ -36,7 +37,7 @@ export default abstract class Block implements IComponent {
     return this.props.className || '';
   }
 
-  constructor(props: IComponentProps) {
+  constructor(props: ComponentProps) {
     const eventBus = new EventBus();
     this.eventEmitter = new EventEmitter();
 
@@ -44,18 +45,18 @@ export default abstract class Block implements IComponent {
 
     this.eventBus = () => eventBus;
     this._registerEvents(eventBus);
-    eventBus.emit(Block.EVENTS.INIT);
+    eventBus.emit(EVENTS.INIT);
   }
 
   _registerEvents(eventBus: EventBus) {
-    eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
-    eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-    eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
-    eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+    eventBus.on(EVENTS.INIT, this.init.bind(this));
+    eventBus.on(EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
+    eventBus.on(EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+    eventBus.on(EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
   protected init() {
-    this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+    this.eventBus().emit(EVENTS.FLOW_CDM);
   }
 
   bindProps() {
@@ -79,7 +80,7 @@ export default abstract class Block implements IComponent {
 
   _componentDidMount() {
     this.componentDidMount();
-    this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+    this.eventBus().emit(EVENTS.FLOW_RENDER);
   }
 
   get content(): HTMLElement {
@@ -96,7 +97,7 @@ export default abstract class Block implements IComponent {
         return;
       }
       if (response) {
-        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+        this.eventBus().emit(EVENTS.FLOW_RENDER);
       }
     }
 
@@ -104,13 +105,13 @@ export default abstract class Block implements IComponent {
       return true;
     }
 
-    setProps = (nextProps: IComponentProps) => {
+    setProps = (nextProps: ComponentProps) => {
       if (!nextProps) {
         return;
       }
 
       Object.assign(this.props, nextProps);
-      this.eventBus().emit(Block.EVENTS.FLOW_CDU);
+      this.eventBus().emit(EVENTS.FLOW_CDU);
     };
 
     private _render(): void {
@@ -163,7 +164,7 @@ export default abstract class Block implements IComponent {
 
     }
 
-    _makePropsProxy(props: IComponentProps) {
+    _makePropsProxy(props: ComponentProps) {
       // Можно и так передать this
       // Такой способ больше не применяется с приходом ES6+
       const self = this;
@@ -172,7 +173,7 @@ export default abstract class Block implements IComponent {
         set(target, prop, value) {
           // @ts-ignore
           target[prop] = value;
-          self.eventBus().emit(Block.EVENTS.FLOW_CDU);
+          self.eventBus().emit(EVENTS.FLOW_CDU);
           return true;
         },
         deleteProperty() {

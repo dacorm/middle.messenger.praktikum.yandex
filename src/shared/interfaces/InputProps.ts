@@ -1,6 +1,6 @@
-import { IComponentProps } from './IComponentProps';
+import { ComponentProps } from './ComponentProps';
 
-export interface InputProps extends IComponentProps {
+export interface InputProps extends ComponentProps {
     for?: string;
     id?: string;
     placeholder?: string;

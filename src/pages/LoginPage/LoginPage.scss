@@ -1,9 +1,9 @@
 @import "../../styles/variables";
 
 
-.register-form {
+.login-form {
   width: 340px;
-  height: 615px;
+  height: 450px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
   border-radius: 12px;
   margin: 52px auto;
@@ -11,6 +11,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
+
 
   &__title {
     font-style: normal;

@@ -1,12 +1,12 @@
-interface IChild {
+interface Child {
     name: string;
     node: HTMLElement;
 }
 
-export interface IComponentProps {
+export interface ComponentProps {
     [key: string]: any;
     className?: string;
     children?: {};
-    child?: IChild | HTMLElement | string;
+    child?: Child | HTMLElement | string;
     events?: Record<string, (...args: any) => void>;
 }

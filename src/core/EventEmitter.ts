@@ -1,6 +1,6 @@
-import { IEventEmitter } from '../assets/interfaces';
+import { EventEmitter } from '../shared/interfaces';
 
-export default class EventEmitter implements IEventEmitter {
+export default class EventEmitter implements EventEmitter {
   protected _node: HTMLElement;
 
   private events = new Set();

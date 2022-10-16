@@ -1,7 +1,7 @@
 import { compile } from 'pug';
 import Block from '../../core/Block';
 import './Input.scss';
-import { InputProps } from '../../assets/interfaces';
+import { InputProps } from '../../shared/interfaces';
 import template from './Input.template';
 
 export default class Input extends Block implements InputProps {

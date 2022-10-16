@@ -1,7 +1,7 @@
-import RegistrationPage from "./pages/RegistrationPage";
 import './main.scss';
-import { renderInDom } from "./shared/utils";
+import {renderInDom} from "./shared/utils";
+import { MainPage } from "./pages/MainPage";
 
-const register = new RegistrationPage({})
+const mainPage = new MainPage({});
 
-renderInDom('#root', register);
+renderInDom('#root', mainPage);
