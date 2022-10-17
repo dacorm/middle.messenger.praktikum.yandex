@@ -9,7 +9,7 @@ ul.index-main-menu
                          li
                              button(data-props='500') 500
                          li
-                             a(href='~static/pages/chats/chats.pug') chats
+                             button(data-props='test') test
                          li
                              a(href='~static/pages/userSettings/userSettings.pug') settings
                          li

@@ -8,6 +8,7 @@ import { LoginPage } from '../LoginPage';
 import { RegistrationPage } from '../RegistrationPage';
 import { ErrorPage } from '../ErrorPage';
 import { Button } from '../../components/Button';
+import {Contact} from "../../components/Contact";
 
 export default class MainPage extends Block {
   constructor(props: ComponentProps) {
@@ -57,6 +58,22 @@ export default class MainPage extends Block {
       },
     });
 
+    const test = new Button({
+      child: 'test',
+      secondary: true,
+      events: {
+        click: () => {
+          renderInDom('#root', new Contact({
+            src: 'https://travel-baikal.com/bitrix/templates/.default/components/bitrix/news.list/reviews/img/logo.jpg',
+            alt: 'Аватарка',
+            name: 'Илья',
+            messagePreview: 'Друзья, у меня для вас особенный выпуск новостей!...',
+            time: '15:12',
+          }));
+        },
+      },
+    });
+
     super({
       ...props,
       children: {
@@ -64,6 +81,7 @@ export default class MainPage extends Block {
         loginPage: loginButton.content,
         404: err404.content,
         500: err500.content,
+        test: test.content,
       },
     });
   }
