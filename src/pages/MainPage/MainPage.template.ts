@@ -1,17 +1,17 @@
 export default `
 ul.index-main-menu
                          li
-                             button(data-props='registerPage') Register
+                             button(data-props='registerPage')
                          li
-                             button(data-props='loginPage') Login
+                             button(data-props='loginPage')
                          li
-                             button(data-props='404') 404
+                             button(data-props='404')
                          li
-                             button(data-props='500') 500
+                             button(data-props='500')
                          li
-                             button(data-props='test') test
+                             button(data-props='test')
                          li
-                             a(href='~static/pages/userSettings/userSettings.pug') settings
+                             button(data-props='chat')
                          li
                              a(href='~static/pages/changePassword/changePassword.pug') change pass
                          li

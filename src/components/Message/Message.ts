@@ -30,11 +30,25 @@ export default class Message extends Block implements MessageProps {
                 attribute: "innerText",
                 isValue: true,
             },
+            {
+                name: "image",
+                selector: ".message-image",
+                attribute: "src",
+                isValue: true
+            }
         ];
     }
 
     protected customiseComponent() {
+        const image = this.node.querySelector('img.message-image');
+        const text = this.node.querySelector('p.message-text')
 
+        if (image && text) {
+            if (this.props.img && this.props.image) {
+                image.classList.add('active');
+                text.classList.add('inactive')
+            }
+        }
     }
 
     render() {

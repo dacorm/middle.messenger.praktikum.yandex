@@ -7,4 +7,5 @@ export interface ContactProps extends ComponentProps {
     messagePreview?: string;
     time?: string;
     count?: number;
+    yours?: boolean;
 }

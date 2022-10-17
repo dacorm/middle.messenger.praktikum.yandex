@@ -9,6 +9,7 @@ import { RegistrationPage } from '../RegistrationPage';
 import { ErrorPage } from '../ErrorPage';
 import { Button } from '../../components/Button';
 import {Contact} from "../../components/Contact";
+import ChatPage from "../ChatPage/ChatPage";
 
 export default class MainPage extends Block {
   constructor(props: ComponentProps) {
@@ -69,10 +70,23 @@ export default class MainPage extends Block {
             name: 'Илья',
             messagePreview: 'Друзья, у меня для вас особенный выпуск новостей!...',
             time: '15:12',
+            yours: true,
+            active: true,
           }));
         },
       },
     });
+
+    const chat = new Button({
+      child: 'chat',
+      secondary: true,
+      events: {
+        click: () => {
+          renderInDom('#root', new ChatPage({}));
+        },
+      },
+    });
+
 
     super({
       ...props,
@@ -82,6 +96,7 @@ export default class MainPage extends Block {
         404: err404.content,
         500: err500.content,
         test: test.content,
+        chat: chat.content,
       },
     });
   }

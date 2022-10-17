@@ -22,6 +22,7 @@
     width: 47px;
     height: 47px;
     margin-right: 10px;
+    border-radius: 50%;
   }
 
   &__message {
@@ -101,4 +102,20 @@
 
 .active {
   display: flex;
+}
+
+.span {
+  display: none;
+  font-style: normal;
+  padding: 0;
+  font-weight: 600;
+  font-size: 12px;
+  margin-right: 3px;
+  line-height: 15px;
+
+  color: #1E1E1E;
+}
+
+.spanActive {
+  display: inline;
 }

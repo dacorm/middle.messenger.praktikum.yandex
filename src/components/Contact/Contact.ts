@@ -3,9 +3,16 @@ import { compile } from "pug";
 import template from './Contact.template';
 import "./Contact.scss";
 import {ContactProps} from "../../shared/interfaces/ContactProps";
+import {classNames} from "../../shared/utils/classNames";
 
 export default class Contact extends Block {
     props: ContactProps;
+
+    get className(): string {
+        return classNames("message", {
+            "message_active": this.props.active,
+        }, []);
+    }
 
     protected get proplist() {
         return [
@@ -47,10 +54,16 @@ export default class Contact extends Block {
     }
 
     protected customiseComponent() {
-        const counter = this.node.querySelector(".message__unread");
+        const counter = this.node.querySelector("div.message__unread");
         if (counter) {
             if (this.props.count && this.props.count > 0) {
-                counter.classList.add("active");
+                counter.classList.add('active');
+            }
+        }
+        const spanEl = this.node.querySelector('.span');
+        if (spanEl) {
+            if (this.props.yours) {
+                spanEl.classList.add('spanActive');
             }
         }
     }

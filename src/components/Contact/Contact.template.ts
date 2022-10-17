@@ -5,6 +5,7 @@ export default `div.message
                                 p.message__username
                                 p.message__time 
                             div.message__bottom
+                                span.span Вы:
                                 p.message__message-text
                                 div.message__unread
                                     p.message__unread-text`
