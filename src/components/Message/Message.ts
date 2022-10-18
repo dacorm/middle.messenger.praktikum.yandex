@@ -10,9 +10,9 @@ export default class Message extends Block implements MessageProps {
     props: MessageProps;
 
     get className(): string {
-        return classNames("message", {
-            "message_my": this.props.my,
-            "message_image": this.props.img,
+        return classNames("msg", {
+            "msg_my": this.props.my,
+            "msg_image": this.props.img,
         }, []);
     }
 
@@ -20,19 +20,19 @@ export default class Message extends Block implements MessageProps {
         return [
             {
                 name: "text",
-                selector: ".message-text",
+                selector: ".msg-text",
                 attribute: "innerText",
                 isValue: true,
             },
             {
                 name: "time",
-                selector: ".message-time",
+                selector: ".msg-time",
                 attribute: "innerText",
                 isValue: true,
             },
             {
                 name: "image",
-                selector: ".message-image",
+                selector: ".msg-image",
                 attribute: "src",
                 isValue: true
             }
@@ -40,12 +40,12 @@ export default class Message extends Block implements MessageProps {
     }
 
     protected customiseComponent() {
-        const image = this.node.querySelector('img.message-image');
-        const text = this.node.querySelector('p.message-text')
+        const image = this.node.querySelector('img.msg-image');
+        const text = this.node.querySelector('p.msg-text')
 
         if (image && text) {
             if (this.props.img && this.props.image) {
-                image.classList.add('active');
+                image.classList.add('activeMsg');
                 text.classList.add('inactive')
             }
         }

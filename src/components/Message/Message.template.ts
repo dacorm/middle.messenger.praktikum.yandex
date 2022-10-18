@@ -1,6 +1,6 @@
 export default `
-div.message
-    p.message-text
-    img.message-image
-    p.message-time
+div.msg
+    p.msg-text
+    img.msg-image
+    p.msg-time
 `
