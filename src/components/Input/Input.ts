@@ -9,20 +9,20 @@ export default class Input extends Block implements InputProps {
 
   protected get proplist() {
     return [
-      { name: 'type', selector: '.input', attribute: 'type' },
-      { name: 'placeholder', selector: '.input', attribute: 'placeholder' },
-      { name: 'name', selector: '.input', attribute: 'name' },
-      { name: 'for', selector: '.label', attribute: 'for' },
-      { name: 'id', selector: '.input', attribute: 'id' },
+      { name: 'type', selector: '.inputComp', attribute: 'type' },
+      { name: 'placeholder', selector: '.inputComp', attribute: 'placeholder' },
+      { name: 'name', selector: '.inputComp', attribute: 'name' },
+      { name: 'for', selector: '.labelComp', attribute: 'for' },
+      { name: 'id', selector: '.inputComp', attribute: 'id' },
       {
         name: 'text',
-        selector: '.label',
+        selector: '.labelComp',
         attribute: 'innerText',
         isValue: true,
       },
       {
         name: 'errorMessage',
-        selector: '.span',
+        selector: '.spanComp',
         attribute: 'innerText',
         isValue: true,
       },

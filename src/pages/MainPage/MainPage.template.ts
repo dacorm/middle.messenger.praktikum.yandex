@@ -9,11 +9,11 @@ ul.index-main-menu
                          li
                              button(data-props='500')
                          li
-                             button(data-props='test')
+                             button(data-props='userSettings')
                          li
                              button(data-props='chat')
                          li
-                             a(href='~static/pages/changePassword/changePassword.pug') change pass
+                             button(data-props='changePassword')
                          li
-                             a(href='~static/pages/changeAvatar/changeAvatar.pug') change avatar
+                             button(data-props='changeAvatar')
 `;

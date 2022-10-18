@@ -7,6 +7,8 @@ import {Contact} from "../../components/Contact";
 import avatar from '../../assets/images/Ellipse.png'
 import {Message} from "../../components/Message";
 import camera from '../../assets/images/camera.png'
+import {renderInDom} from "../../shared/utils";
+import {UserSettingsPage} from "../UserSettingsPage";
 
 export default class ChatPage extends Block {
     constructor(props: ComponentProps) {
@@ -88,8 +90,16 @@ export default class ChatPage extends Block {
     }
 
     protected customiseComponent() {
+        const link: HTMLLinkElement = (
+            this
+                .node
+                .querySelector('a.screen__chats-profile-link') as HTMLLinkElement
+        )
 
+        if (link) {
+            link.addEventListener('click', () => {
+                renderInDom('#root', new UserSettingsPage({}));
+            })
+        }
     }
-
-
 }

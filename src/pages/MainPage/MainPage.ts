@@ -8,8 +8,10 @@ import { LoginPage } from '../LoginPage';
 import { RegistrationPage } from '../RegistrationPage';
 import { ErrorPage } from '../ErrorPage';
 import { Button } from '../../components/Button';
-import {Contact} from "../../components/Contact";
 import ChatPage from "../ChatPage/ChatPage";
+import {UserSettingsPage} from "../UserSettingsPage";
+import {ChangePasswordPage} from "../ChangePasswordPage";
+import {ChangeAvatarPage} from "../ChangeAvatarPage";
 
 export default class MainPage extends Block {
   constructor(props: ComponentProps) {
@@ -59,20 +61,12 @@ export default class MainPage extends Block {
       },
     });
 
-    const test = new Button({
-      child: 'test',
+    const userSettings = new Button({
+      child: 'userSettings',
       secondary: true,
       events: {
         click: () => {
-          renderInDom('#root', new Contact({
-            src: 'https://travel-baikal.com/bitrix/templates/.default/components/bitrix/news.list/reviews/img/logo.jpg',
-            alt: 'Аватарка',
-            name: 'Илья',
-            messagePreview: 'Друзья, у меня для вас особенный выпуск новостей!...',
-            time: '15:12',
-            yours: true,
-            active: true,
-          }));
+          renderInDom('#root', new UserSettingsPage({}));
         },
       },
     });
@@ -87,6 +81,26 @@ export default class MainPage extends Block {
       },
     });
 
+    const changePass = new Button({
+      child: 'change password',
+      secondary: true,
+      events: {
+        click: () => {
+          renderInDom('#root', new ChangePasswordPage({}));
+        },
+      },
+    });
+
+    const changeAvatar = new Button({
+      child: 'change avatar',
+      secondary: true,
+      events: {
+        click: () => {
+          renderInDom('#root', new ChangeAvatarPage({}));
+        },
+      },
+    });
+
 
     super({
       ...props,
@@ -95,8 +109,10 @@ export default class MainPage extends Block {
         loginPage: loginButton.content,
         404: err404.content,
         500: err500.content,
-        test: test.content,
+        userSettings: userSettings.content,
         chat: chat.content,
+        changePassword: changePass.content,
+        changeAvatar: changeAvatar.content,
       },
     });
   }

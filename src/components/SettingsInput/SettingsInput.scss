@@ -1,0 +1,41 @@
+.input__containerStngs {
+  width: 100%;
+  border-bottom: 1px solid #EAEAEA;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  height: 30px;
+  padding-bottom: 10px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+
+
+  .inputStngs {
+
+
+    &::placeholder {
+      text-align: right;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 13px;
+
+
+      color: #999999;
+    }
+  }
+
+  .labelStngs {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    width: fit-content;
+    height: fit-content;
+
+    color: #1E1E1E;
+  }
+}

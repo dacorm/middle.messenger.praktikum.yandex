@@ -9,7 +9,7 @@ export default `div.screen
         div.screen__chats
             div.screen__chats-top
                 div.screen__chats-link
-                    a.screen__chats-profile-link(href='#') Профиль
+                    a.screen__chats-profile-link Профиль
                     img.screen__chats-profile-link-image(src='${arrow}' alt='Стрелка вправо')
                 input.screen__chats-input(type='text')
                 div.input-placeholder
