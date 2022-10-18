@@ -1,9 +1,0 @@
-extends ../../index.pug
-include ../../components/info/info.pug
-
-block content
-    div.content
-        +info('404', 'Не туда попали')
-
-append scripts
-    script(type="module", src="./ErrorPage.ts")

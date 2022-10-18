@@ -1,1 +1,0 @@
-import './userSettings.scss';
