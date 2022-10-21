@@ -6,7 +6,7 @@ import template from './UserSettingsPage.template';
 import { SettingsInput } from '../../components/SettingsInput';
 import { renderInDom } from '../../shared/utils';
 import { MainPage } from '../MainPage';
-import {validate, validateForm} from "../../shared/utils/validation";
+import { validate, validateForm } from '../../shared/utils/validation';
 
 export default class UserSettingsPage extends Block {
   constructor(props: ComponentProps) {
@@ -22,9 +22,9 @@ export default class UserSettingsPage extends Block {
       maxlength: 25,
       events: {
         blur: (e: any) => {
-          validate({hasError: 'hasError'}, e.target);
-        }
-      }
+          validate({ hasError: 'hasError' }, e.target);
+        },
+      },
     });
 
     const login = new SettingsInput({
@@ -39,9 +39,9 @@ export default class UserSettingsPage extends Block {
       maxlength: 25,
       events: {
         blur: (e: any) => {
-          validate({hasError: 'hasError'}, e.target);
-        }
-      }
+          validate({ hasError: 'hasError' }, e.target);
+        },
+      },
     });
 
     const firstName = new SettingsInput({
@@ -56,9 +56,9 @@ export default class UserSettingsPage extends Block {
       maxlength: 25,
       events: {
         blur: (e: any) => {
-          validate({hasError: 'hasError'}, e.target);
-        }
-      }
+          validate({ hasError: 'hasError' }, e.target);
+        },
+      },
     });
 
     const secondName = new SettingsInput({
@@ -73,9 +73,9 @@ export default class UserSettingsPage extends Block {
       maxlength: 25,
       events: {
         blur: (e: any) => {
-          validate({hasError: 'hasError'}, e.target);
-        }
-      }
+          validate({ hasError: 'hasError' }, e.target);
+        },
+      },
     });
 
     const displayName = new SettingsInput({
@@ -90,9 +90,9 @@ export default class UserSettingsPage extends Block {
       maxlength: 25,
       events: {
         blur: (e: any) => {
-          validate({hasError: 'hasError'}, e.target);
-        }
-      }
+          validate({ hasError: 'hasError' }, e.target);
+        },
+      },
     });
 
     const phone = new SettingsInput({
@@ -107,9 +107,9 @@ export default class UserSettingsPage extends Block {
       maxlength: 25,
       events: {
         blur: (e: any) => {
-          validate({hasError: 'hasError'}, e.target);
-        }
-      }
+          validate({ hasError: 'hasError' }, e.target);
+        },
+      },
     });
 
     super({

@@ -6,7 +6,7 @@ import template from './RegistrationPage.template';
 import { Input } from '../../components/Input';
 import { renderInDom } from '../../shared/utils';
 import { LoginPage } from '../LoginPage';
-import {validate, validateForm} from "../../shared/utils/validation";
+import { validate, validateForm } from '../../shared/utils/validation';
 
 export default class RegistrationPage extends Block {
   constructor(props: ComponentProps) {
@@ -22,9 +22,9 @@ export default class RegistrationPage extends Block {
       maxlength: 25,
       events: {
         blur: (e: any) => {
-          validate({hasError: 'hasError'}, e.target);
-        }
-      }
+          validate({ hasError: 'hasError' }, e.target);
+        },
+      },
     });
 
     const loginInput = new Input({
@@ -39,9 +39,9 @@ export default class RegistrationPage extends Block {
       maxlength: 25,
       events: {
         blur: (e: any) => {
-          validate({hasError: 'hasError'}, e.target);
-        }
-      }
+          validate({ hasError: 'hasError' }, e.target);
+        },
+      },
     });
 
     const firstNameInput = new Input({
@@ -56,9 +56,9 @@ export default class RegistrationPage extends Block {
       maxlength: 25,
       events: {
         blur: (e: any) => {
-          validate({hasError: 'hasError'}, e.target);
-        }
-      }
+          validate({ hasError: 'hasError' }, e.target);
+        },
+      },
     });
 
     const secondNameInput = new Input({
@@ -73,9 +73,9 @@ export default class RegistrationPage extends Block {
       maxlength: 25,
       events: {
         blur: (e: any) => {
-          validate({hasError: 'hasError'}, e.target);
-        }
-      }
+          validate({ hasError: 'hasError' }, e.target);
+        },
+      },
     });
 
     const phoneInput = new Input({
@@ -90,9 +90,9 @@ export default class RegistrationPage extends Block {
       maxlength: 12,
       events: {
         blur: (e: any) => {
-          validate({hasError: 'hasError'}, e.target);
-        }
-      }
+          validate({ hasError: 'hasError' }, e.target);
+        },
+      },
     });
 
     const passwordInput = new Input({
@@ -107,9 +107,9 @@ export default class RegistrationPage extends Block {
       maxlength: 25,
       events: {
         blur: (e: any) => {
-          validate({hasError: 'hasError'}, e.target);
-        }
-      }
+          validate({ hasError: 'hasError' }, e.target);
+        },
+      },
     });
 
     const passwordConfirmInput = new Input({
@@ -124,9 +124,9 @@ export default class RegistrationPage extends Block {
       maxlength: 25,
       events: {
         blur: (e: any) => {
-          validate({hasError: 'hasError'}, e.target);
-        }
-      }
+          validate({ hasError: 'hasError' }, e.target);
+        },
+      },
     });
 
     super({
@@ -167,9 +167,6 @@ export default class RegistrationPage extends Block {
         console.log(isValid ? 'Форма валидна' : 'Форма не валидна');
       });
     }
-
-
-
 
     const link: HTMLLinkElement = (
         this
