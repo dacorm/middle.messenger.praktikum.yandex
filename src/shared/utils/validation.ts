@@ -1,6 +1,18 @@
 type classes = Record<string, string>
 
-export const isValid = (input: HTMLInputElement) => input.validity.valid;
+export const checkEmail = (value: string) => {
+  return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+      value
+  );
+};
+
+export const isValid = (input: HTMLInputElement) => {
+  if (input.id === 'email') {
+    return checkEmail(input.value);
+  } else {
+    return input.validity.valid
+  }
+};
 
 export const getValidationMsg = (input: HTMLInputElement) => input.validationMessage;
 
