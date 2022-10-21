@@ -1,4 +1,4 @@
-import {ComponentProps} from "./ComponentProps";
+import { ComponentProps } from './ComponentProps';
 
 export interface ContactProps extends ComponentProps {
     image: string;

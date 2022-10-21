@@ -7,5 +7,8 @@ export interface InputProps extends ComponentProps {
     type?: string;
     name?: string;
     text?: string;
-    errorMessage?: string
+    errorMessage?: string;
+    required?: boolean;
+    maxlength?: number;
+    minlength?: number;
 }

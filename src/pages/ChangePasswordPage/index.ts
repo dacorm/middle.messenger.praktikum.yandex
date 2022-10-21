@@ -1,5 +1,5 @@
-import ChangePasswordPage from "./ChangePasswordPage";
+import ChangePasswordPage from './ChangePasswordPage';
 
 export {
-    ChangePasswordPage,
-}
+  ChangePasswordPage,
+};

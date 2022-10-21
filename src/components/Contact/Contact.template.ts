@@ -8,4 +8,4 @@ export default `div.message
                                 span.span Вы:
                                 p.message__message-text
                                 div.message__unread
-                                    p.message__unread-text`
+                                    p.message__unread-text`;

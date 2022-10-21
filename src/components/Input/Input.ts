@@ -14,6 +14,9 @@ export default class Input extends Block implements InputProps {
       { name: 'name', selector: '.inputComp', attribute: 'name' },
       { name: 'for', selector: '.labelComp', attribute: 'for' },
       { name: 'id', selector: '.inputComp', attribute: 'id' },
+      { name: 'required', selector: '.inputComp', attribute: 'required' },
+      { name: 'minlength', selector: '.inputComp', attribute: 'minlength' },
+      { name: 'maxlength', selector: '.inputComp', attribute: 'maxlength' },
       {
         name: 'text',
         selector: '.labelComp',

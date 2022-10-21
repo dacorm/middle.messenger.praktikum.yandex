@@ -1,4 +1,4 @@
-import {ComponentProps} from "./ComponentProps";
+import { ComponentProps } from './ComponentProps';
 
 export interface SettingsInputProps extends ComponentProps {
     for?: string;
@@ -7,4 +7,6 @@ export interface SettingsInputProps extends ComponentProps {
     type?: string;
     name?: string;
     id?: string
+    maxlength?: number;
+    minlength?: number;
 }

@@ -34,4 +34,4 @@ export default `div.screen
             div.screen__chat-input
                 img.screen__chat-input-add(src='${add}' alt='Прикрепить')
                 input.screen__chat-input-input(type='text' placeholder='Сообщение' id='message' name='message')
-                img.screen__chat-input-send(src='${send}' alt='Отправить сообщение')`
+                img.screen__chat-input-send(src='${send}' alt='Отправить сообщение')`;

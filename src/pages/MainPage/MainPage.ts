@@ -8,10 +8,10 @@ import { LoginPage } from '../LoginPage';
 import { RegistrationPage } from '../RegistrationPage';
 import { ErrorPage } from '../ErrorPage';
 import { Button } from '../../components/Button';
-import ChatPage from "../ChatPage/ChatPage";
-import {UserSettingsPage} from "../UserSettingsPage";
-import {ChangePasswordPage} from "../ChangePasswordPage";
-import {ChangeAvatarPage} from "../ChangeAvatarPage";
+import ChatPage from '../ChatPage/ChatPage';
+import { UserSettingsPage } from '../UserSettingsPage';
+import { ChangePasswordPage } from '../ChangePasswordPage';
+import { ChangeAvatarPage } from '../ChangeAvatarPage';
 
 export default class MainPage extends Block {
   constructor(props: ComponentProps) {
@@ -100,7 +100,6 @@ export default class MainPage extends Block {
         },
       },
     });
-
 
     super({
       ...props,

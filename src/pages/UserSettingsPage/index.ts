@@ -1,5 +1,5 @@
-import UserSettingsPage from "./UserSettingsPage";
+import UserSettingsPage from './UserSettingsPage';
 
 export {
-    UserSettingsPage,
-}
+  UserSettingsPage,
+};

@@ -6,6 +6,7 @@ import template from './RegistrationPage.template';
 import { Input } from '../../components/Input';
 import { renderInDom } from '../../shared/utils';
 import { LoginPage } from '../LoginPage';
+import {validate, validateForm} from "../../shared/utils/validation";
 
 export default class RegistrationPage extends Block {
   constructor(props: ComponentProps) {
@@ -16,6 +17,14 @@ export default class RegistrationPage extends Block {
       id: 'email',
       type: 'email',
       for: 'email',
+      required: true,
+      minlength: 1,
+      maxlength: 25,
+      events: {
+        blur: (e: any) => {
+          validate({hasError: 'hasError'}, e.target);
+        }
+      }
     });
 
     const loginInput = new Input({
@@ -25,6 +34,14 @@ export default class RegistrationPage extends Block {
       id: 'login',
       type: 'text',
       for: 'login',
+      required: true,
+      minlength: 1,
+      maxlength: 25,
+      events: {
+        blur: (e: any) => {
+          validate({hasError: 'hasError'}, e.target);
+        }
+      }
     });
 
     const firstNameInput = new Input({
@@ -34,6 +51,14 @@ export default class RegistrationPage extends Block {
       id: 'first_name',
       type: 'text',
       for: 'first_name',
+      required: true,
+      minlength: 1,
+      maxlength: 25,
+      events: {
+        blur: (e: any) => {
+          validate({hasError: 'hasError'}, e.target);
+        }
+      }
     });
 
     const secondNameInput = new Input({
@@ -43,6 +68,14 @@ export default class RegistrationPage extends Block {
       id: 'second_name',
       type: 'text',
       for: 'second_name',
+      required: true,
+      minlength: 1,
+      maxlength: 25,
+      events: {
+        blur: (e: any) => {
+          validate({hasError: 'hasError'}, e.target);
+        }
+      }
     });
 
     const phoneInput = new Input({
@@ -50,8 +83,16 @@ export default class RegistrationPage extends Block {
       text: 'Номер телефона',
       name: 'phone',
       id: 'phone',
-      type: 'phone',
+      type: 'tel',
       for: 'phone',
+      required: true,
+      minlength: 1,
+      maxlength: 12,
+      events: {
+        blur: (e: any) => {
+          validate({hasError: 'hasError'}, e.target);
+        }
+      }
     });
 
     const passwordInput = new Input({
@@ -61,6 +102,14 @@ export default class RegistrationPage extends Block {
       id: 'password',
       type: 'password',
       for: 'password',
+      required: true,
+      minlength: 1,
+      maxlength: 25,
+      events: {
+        blur: (e: any) => {
+          validate({hasError: 'hasError'}, e.target);
+        }
+      }
     });
 
     const passwordConfirmInput = new Input({
@@ -70,7 +119,14 @@ export default class RegistrationPage extends Block {
       type: 'password',
       name: 'password_confirm',
       for: 'password_confirm',
-      errorMessage: 'Пароли не совпадают',
+      required: true,
+      minlength: 1,
+      maxlength: 25,
+      events: {
+        blur: (e: any) => {
+          validate({hasError: 'hasError'}, e.target);
+        }
+      }
     });
 
     super({
@@ -98,13 +154,22 @@ export default class RegistrationPage extends Block {
           .querySelector('form.register-form__container') as HTMLFormElement
     );
 
+    let isValid = false;
+
     if (form) {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(form);
         console.log(Object.fromEntries(formData.entries()));
+        const inputs = form.querySelectorAll('input');
+
+        isValid = validateForm(inputs);
+        console.log(isValid ? 'Форма валидна' : 'Форма не валидна');
       });
     }
+
+
+
 
     const link: HTMLLinkElement = (
         this

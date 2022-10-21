@@ -1,5 +1,5 @@
-import ChangeAvatarPage from "./ChangeAvatarPage";
+import ChangeAvatarPage from './ChangeAvatarPage';
 
 export {
-    ChangeAvatarPage,
-}
+  ChangeAvatarPage,
+};

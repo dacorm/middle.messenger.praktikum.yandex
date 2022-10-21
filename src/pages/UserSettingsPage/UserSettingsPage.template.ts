@@ -10,4 +10,4 @@ div.settings
             input(data-props='phone')
         button.settings__button(type='submit' form='userSettings') Сохранить
         div.settings__push-back
-            a.settings__push-back-button`
+            a.settings__push-back-button`;

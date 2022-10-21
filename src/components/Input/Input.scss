@@ -13,6 +13,7 @@
     font-weight: 400;
     font-size: 8px;
     line-height: 8px;
+    max-width: 232px;
 
     color: #FF2F2F
   }
@@ -40,5 +41,9 @@
 
       color: #999999;
     }
+  }
+
+  .hasError {
+    border-bottom: 1px solid red;
   }
 }

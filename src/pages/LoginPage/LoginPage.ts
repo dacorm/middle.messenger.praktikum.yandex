@@ -6,6 +6,7 @@ import template from './LoginPage.template';
 import { Input } from '../../components/Input';
 import { renderInDom } from '../../shared/utils';
 import { RegistrationPage } from '../RegistrationPage';
+import {validate} from "../../shared/utils/validation";
 
 export default class LoginPage extends Block {
   constructor(props: ComponentProps) {
@@ -16,6 +17,12 @@ export default class LoginPage extends Block {
       id: 'login',
       type: 'text',
       for: 'login',
+      required: true,
+      events: {
+        blur: (e: any) => {
+          validate({hasError: 'hasError'}, e.target);
+        }
+      }
     });
 
     const passwordInput = new Input({
@@ -25,6 +32,12 @@ export default class LoginPage extends Block {
       id: 'password',
       type: 'password',
       for: 'password',
+      required: true,
+      events: {
+        blur: (e: any) => {
+          validate({hasError: 'hasError'}, e.target);
+        }
+      }
     });
 
     super({

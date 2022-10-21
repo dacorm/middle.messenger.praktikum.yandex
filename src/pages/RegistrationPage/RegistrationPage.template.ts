@@ -1,6 +1,6 @@
 export default `
 div.register-form
-        form.register-form__container(id='registerForm')
+        form.register-form__container(id='registerForm' novalidate)
             h2.register-form__title Регистрация
             input(data-props='emailInput')
             input(data-props='loginInput')
