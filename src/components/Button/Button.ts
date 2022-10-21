@@ -1,6 +1,6 @@
 import { compile } from 'pug';
 import Block from '../../core/Block';
-import './button.scss';
+import './Button.scss';
 import { ButtonProps } from '../../shared/interfaces/ButtonProps';
 import { classNames } from '../../shared/utils/classNames';
 
