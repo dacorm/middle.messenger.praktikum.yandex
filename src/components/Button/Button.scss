@@ -1,0 +1,30 @@
+@import "../../styles/variables";
+
+.form__submit-button {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  cursor: pointer;
+  text-align: center;
+
+  color: #FFFFFF;
+  width: 280px;
+  height: 37px;
+  background: $color_blue;
+  border-radius: 8px;
+  padding: 12px 70px;
+}
+
+.link {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 11px;
+  cursor: pointer;
+
+  text-align: center;
+  margin-top: 14px;
+  color: $color_blue;
+  padding-bottom: 30px;
+}

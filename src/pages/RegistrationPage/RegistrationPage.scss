@@ -1,0 +1,58 @@
+@import "../../styles/variables";
+
+
+.register-form {
+  width: 340px;
+  height: 615px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
+  border-radius: 12px;
+  margin: 52px auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    margin: 50px auto 40px;
+    text-align: center;
+
+    color: #1E1E1E;
+  }
+
+  &__submit-button {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    cursor: pointer;
+    text-align: center;
+
+    color: #FFFFFF;
+    width: 280px;
+    height: 37px;
+    background: $color_blue;
+    border-radius: 8px;
+    padding: 12px 70px;
+  }
+
+  &__link {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 11px;
+
+    text-align: center;
+    margin-top: 14px;
+    color: $color_blue;
+    padding-bottom: 30px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+  }
+}
