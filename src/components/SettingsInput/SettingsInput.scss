@@ -1,44 +1,44 @@
+@import "../../styles/variables";
+
 .input__containerStngs {
-  width: 100%;
   border-bottom: 1px solid #EAEAEA;
-  margin-bottom: 10px;
   display: flex;
-  justify-content: space-between;
   height: 30px;
+  justify-content: space-between;
+  margin-bottom: 10px;
   padding-bottom: 10px;
+  width: 100%;
 
   &:last-of-type {
+    border-bottom: 0;
     margin-bottom: 0;
-    border-bottom: none;
   }
 
   .inputStngs {
-
-
     &::placeholder {
-      text-align: right;
+
+
+      color: #999;
+      font-size: 13px;
       font-style: normal;
       font-weight: 500;
-      font-size: 13px;
       line-height: 13px;
-
-
-      color: #999999;
+      text-align: right;
     }
   }
 
   .labelStngs {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 13px;
-    width: fit-content;
-    height: fit-content;
 
     color: #1E1E1E;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    height: fit-content;
+    line-height: 13px;
+    width: fit-content;
   }
 
   .hasError {
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid $color_red;
   }
 }

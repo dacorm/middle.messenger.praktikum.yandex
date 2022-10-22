@@ -2,139 +2,139 @@
 
 .screen {
   display: flex;
-  width: 100%;
-  height: 100%;
   flex: 4;
+  height: 100%;
+  width: 100%;
 
   &__chat {
     display: flex;
+    flex: 3;
     flex-direction: column;
     justify-content: space-between;
-    flex: 3;
     min-height: 100%;
 
     &-date {
-      text-align: center;
+      color: #999;
+      font-size: 12px;
       font-style: normal;
       font-weight: 500;
-      font-size: 12px;
       line-height: 12px;
-      color: #999999;
+      text-align: center;
     }
 
     &-message {
+      background: #F8F8F8;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      margin-left: 20px;
+      max-width: 402px;
       min-height: 40px;
       min-width: 115px;
       padding: 11px;
-      background: #F8F8F8;
-      border-radius: 8px;
-      max-width: 402px;
-      margin-left: 20px;
-      display: flex;
-      flex-direction: column;
 
       &_my {
         align-self: flex-end;
+        background: #E4EDFD;
         margin-left: 0;
         margin-right: 20px;
-        background: #E4EDFD;
       }
 
       &_image {
-        width: 315px;
         height: 200px;
         padding: 0;
+        width: 315px;
       }
 
       &-image {
-        width: 100%;
         height: 100%;
+        width: 100%;
       }
 
       &-text {
+        color: #1E1E1E;
+        font-size: 12px;
         font-style: normal;
         font-weight: 500;
-        font-size: 12px;
-        line-height: 15px;
-        color: #1E1E1E
+        line-height: 15px
       }
 
       &-time {
-        text-align: right;
-        width: 23px;
-        height: 10px;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 9px;
-        line-height: 9px;
         align-self: flex-end;
 
-        color: #999999;
+        color: #999;
+        font-size: 9px;
+        font-style: normal;
+        font-weight: 500;
+        height: 10px;
+        line-height: 9px;
+        text-align: right;
+        width: 23px;
       }
     }
 
     &-user {
-      display: flex;
       align-items: center;
+      border-bottom: 1px solid #EAEAEA;
+      display: flex;
       justify-content: space-between;
       margin: 10px;
-      border-bottom: 1px solid #EAEAEA;
       padding-bottom: 12px;
 
       &-info {
-        display: flex;
         align-items: center;
+        display: flex;
         gap: 10px;
       }
 
       &-username {
-        font-style: normal;
-        font-weight: 600;
-        font-size: 13px;
-        line-height: 13px;
 
 
         color: #1E1E1E;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 13px;
       }
     }
 
     &-input {
-      display: flex;
       align-items: center;
       border-top: 1px solid #EAEAEA;
+      display: flex;
       margin: 10px;
       padding-top: 12px;
 
       &-input {
-        width: calc(100% - 80px);
-        height: 32px;
         background: #EFEFEF;
         border-radius: 30px;
-        padding-left: 20px;
         box-sizing: border-box;
+        height: 32px;
+        padding-left: 20px;
+        width: calc(100% - 80px);
 
         &::placeholder {
+
+
+          color: #999;
+          font-size: 12px;
           font-style: normal;
           font-weight: 500;
-          font-size: 12px;
           line-height: 12px;
-
-
-          color: #999999;
         }
       }
 
       &-add {
-        width: 32px;
         height: 32px;
         margin-right: 10px;
+        width: 32px;
       }
 
       &-send {
-        width: 28px;
+        cursor: pointer;
         height: 28px;
         margin-left: 10px;
-        cursor: pointer;
+        width: 28px;
       }
     }
 
@@ -144,66 +144,66 @@
   }
 
   &__chats {
+    background: #FBFBFB;
     display: flex;
     flex-direction: column;
-    width: 310px;
-    background: #FBFBFB;
     position: relative;
+    width: 310px;
 
 
     &-link {
-      display: flex;
       align-items: center;
+      display: flex;
       gap: 8px;
       margin: 21px 10px 23px auto;
       width: fit-content;
     }
 
     &-profile-link {
+
+      color: #999;
+      font-size: 12px;
       font-style: normal;
       font-weight: 500;
-      font-size: 12px;
       line-height: 12px;
 
       text-align: right;
-
-      color: #999999;
     }
 
     &-profile-link-image {
-      width: 10px;
       height: 10px;
+      width: 10px;
     }
 
     &-input {
-      width: 290px;
-      height: 32px;
-      margin: 0 10px 14px 10px;
       background: #EFEFEF;
       border-radius: 5px;
+      height: 32px;
+      margin: 0 10px 14px;
+      width: 290px;
     }
 
     .input-placeholder {
-      display: flex;
       align-items: center;
+      display: flex;
       gap: 5px;
       position: absolute;
       right: 137px;
       top: 65px;
 
       &__text {
+
+
+        color: #999;
+        font-size: 12px;
         font-style: normal;
         font-weight: 500;
-        font-size: 12px;
         line-height: 12px;
-
-
-        color: #999999;
       }
 
       &__placeholder {
-        width: 15px;
         height: 15px;
+        width: 15px;
       }
     }
 

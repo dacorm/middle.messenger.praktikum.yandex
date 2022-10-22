@@ -1,18 +1,18 @@
 @font-face {
   font-family: "Inter";
-  src: url("./fonts/Inter/Inter-Bold.ttf") format("truetype");
-  font-weight: normal;
   font-style: normal;
+  font-weight: normal;
+  src: url("./fonts/Inter/Inter-Bold.ttf") format("truetype");
 }
 @font-face {
   font-family: "Inter";
-  src: url("./fonts/Inter/Inter-Bold.ttf") format("truetype");
-  font-weight: bold;
   font-style: normal;
+  font-weight: bold;
+  src: url("./fonts/Inter/Inter-Bold.ttf") format("truetype");
 }
 body {
-  font-family: "Inter", sans-serif;
   background: #fff;
+  font-family: "Inter", sans-serif;
 }
 
 * {
@@ -38,12 +38,12 @@ input,
 button,
 textarea,
 select {
-  margin: 0;
+  border: 0;
   font: inherit;
-  border: none;
+  margin: 0;
 }
 
-#root {
+.root {
   height: 100vh;
 }
 
