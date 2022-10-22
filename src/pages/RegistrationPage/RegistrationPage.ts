@@ -1,12 +1,12 @@
-import {compile} from 'pug';
+import { compile } from 'pug';
 import Block from '../../core/Block';
-import {ComponentProps} from '../../shared/interfaces';
+import { ComponentProps } from '../../shared/interfaces';
 import './RegistrationPage.scss';
 import template from './RegistrationPage.template';
-import {Input} from '../../components/Input';
-import {renderInDom} from '../../shared/utils';
-import {LoginPage} from '../LoginPage';
-import {handleValidation, validateForm} from '../../shared/utils/validation';
+import { Input } from '../../components/Input';
+import { renderInDom } from '../../shared/utils';
+import { LoginPage } from '../LoginPage';
+import { handleValidation, validateForm } from '../../shared/utils/validation';
 
 export default class RegistrationPage extends Block {
   constructor(props: ComponentProps) {
@@ -22,7 +22,7 @@ export default class RegistrationPage extends Block {
       maxlength: 25,
       events: {
         blur: handleValidation,
-        focus: handleValidation
+        focus: handleValidation,
       },
     });
 
@@ -38,7 +38,7 @@ export default class RegistrationPage extends Block {
       maxlength: 25,
       events: {
         blur: handleValidation,
-        focus: handleValidation
+        focus: handleValidation,
       },
     });
 
@@ -54,7 +54,7 @@ export default class RegistrationPage extends Block {
       maxlength: 25,
       events: {
         blur: handleValidation,
-        focus: handleValidation
+        focus: handleValidation,
       },
     });
 
@@ -70,7 +70,7 @@ export default class RegistrationPage extends Block {
       maxlength: 25,
       events: {
         blur: handleValidation,
-        focus: handleValidation
+        focus: handleValidation,
       },
     });
 
@@ -86,7 +86,7 @@ export default class RegistrationPage extends Block {
       maxlength: 12,
       events: {
         blur: handleValidation,
-        focus: handleValidation
+        focus: handleValidation,
       },
     });
 
@@ -102,7 +102,7 @@ export default class RegistrationPage extends Block {
       maxlength: 25,
       events: {
         blur: handleValidation,
-        focus: handleValidation
+        focus: handleValidation,
       },
     });
 
@@ -118,7 +118,7 @@ export default class RegistrationPage extends Block {
       maxlength: 25,
       events: {
         blur: handleValidation,
-        focus: handleValidation
+        focus: handleValidation,
       },
     });
 
