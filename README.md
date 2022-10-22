@@ -1,4 +1,4 @@
-- Демо проекта - https://633e9b543a748b00080f03c4--genuine-starlight-574a8c.netlify.app/index.html
+- Демо проекта - https://genuine-starlight-574a8c.netlify.app/
 - Запуск проекта - npm run start
 - Сборка проекта - npm run build
 - Запуск в режиме разработки - npm run dev

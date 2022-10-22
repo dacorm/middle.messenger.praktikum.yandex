@@ -1,0 +1,234 @@
+@import "../../styles/variables";
+
+.screen {
+  display: flex;
+  flex: 4;
+  height: 100%;
+  width: 100%;
+
+  &__chat {
+    display: flex;
+    flex: 3;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+
+    &-date {
+      color: #999;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 12px;
+      text-align: center;
+    }
+
+    &-message {
+      background: #F8F8F8;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      margin-left: 20px;
+      max-width: 402px;
+      min-height: 40px;
+      min-width: 115px;
+      padding: 11px;
+
+      &_my {
+        align-self: flex-end;
+        background: #E4EDFD;
+        margin-left: 0;
+        margin-right: 20px;
+      }
+
+      &_image {
+        height: 200px;
+        padding: 0;
+        width: 315px;
+      }
+
+      &-image {
+        height: 100%;
+        width: 100%;
+      }
+
+      &-text {
+        color: #1E1E1E;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 15px
+      }
+
+      &-time {
+        align-self: flex-end;
+
+        color: #999;
+        font-size: 9px;
+        font-style: normal;
+        font-weight: 500;
+        height: 10px;
+        line-height: 9px;
+        text-align: right;
+        width: 23px;
+      }
+    }
+
+    &-user {
+      align-items: center;
+      border-bottom: 1px solid #EAEAEA;
+      display: flex;
+      justify-content: space-between;
+      margin: 10px;
+      padding-bottom: 12px;
+
+      &-info {
+        align-items: center;
+        display: flex;
+        gap: 10px;
+      }
+
+      &-username {
+
+
+        color: #1E1E1E;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 13px;
+      }
+    }
+
+    &-input {
+      align-items: center;
+      border-top: 1px solid #EAEAEA;
+      display: flex;
+      margin: 10px;
+      padding-top: 12px;
+      position: relative;
+
+      &-input {
+        background: #EFEFEF;
+        border-radius: 30px;
+        box-sizing: border-box;
+        height: 32px;
+        padding-left: 20px;
+        width: calc(100% - 80px);
+
+        &::placeholder {
+
+
+          color: #999;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 12px;
+        }
+      }
+
+      &-span {
+        color: #FF2F2F;
+        font-size: 8px;
+        font-style: normal;
+        font-weight: 400;
+        height: 16px;
+        left: 40px;
+        line-height: 8px;
+        max-width: 232px;
+        padding: 7px 0 0;
+        position: absolute;
+        top: -10px;
+      }
+
+      .hasError {
+        border: 1px solid $color_red;
+      }
+
+      &-add {
+        height: 32px;
+        margin-right: 10px;
+        width: 32px;
+      }
+
+      &-send {
+        cursor: pointer;
+        height: 28px;
+        margin-left: 10px;
+        width: 28px;
+      }
+    }
+
+    &-button {
+      background: transparent;
+    }
+  }
+
+  &__chats {
+    background: #FBFBFB;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 310px;
+
+
+    &-link {
+      align-items: center;
+      display: flex;
+      gap: 8px;
+      margin: 21px 10px 23px auto;
+      width: fit-content;
+    }
+
+    &-profile-link {
+
+      color: #999;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 12px;
+
+      text-align: right;
+    }
+
+    &-profile-link-image {
+      height: 10px;
+      width: 10px;
+    }
+
+    &-input {
+      background: #EFEFEF;
+      border-radius: 5px;
+      height: 32px;
+      margin: 0 10px 14px;
+      width: 290px;
+    }
+
+    .input-placeholder {
+      align-items: center;
+      display: flex;
+      gap: 5px;
+      position: absolute;
+      right: 137px;
+      top: 65px;
+
+      &__text {
+
+
+        color: #999;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 12px;
+      }
+
+      &__placeholder {
+        height: 15px;
+        width: 15px;
+      }
+    }
+
+    &-messages {
+      min-height: 100%;
+      width: 100%;
+    }
+  }
+}

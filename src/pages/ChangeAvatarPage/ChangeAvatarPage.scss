@@ -1,0 +1,83 @@
+@import "../../styles/variables";
+
+
+.overlay {
+  align-items: center;
+  background-color: rgba(0, 0, 0, .4);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  &__popup {
+    align-items: center;
+    background: #FFF;
+    border-radius: 12px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
+    display: flex;
+    flex-direction: column;
+    height: 260px;
+    width: 340px;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__title {
+
+    color: #1E1E1E;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    margin: 40px 0;
+
+    text-align: center;
+  }
+
+  &__label {
+
+    color: $color_blue;
+    cursor: pointer;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    margin-bottom: 45px;
+
+    text-align: center;
+    text-decoration-line: underline;
+    transition: .3s;
+    width: 120px;
+
+    &:hover {
+      opacity: .6;
+    }
+  }
+
+  &__button {
+    background: $color_blue;
+    border-radius: 8px;
+    color: #FFF;
+    cursor: pointer;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    height: 37px;
+    line-height: 13px;
+    margin-bottom: 40px;
+    padding: 12px 0;
+
+    text-align: center;
+    transition: .3s;
+    width: 280px;
+
+    &:hover {
+      opacity: .6;
+    }
+  }
+}

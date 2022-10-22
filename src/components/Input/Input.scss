@@ -1,0 +1,49 @@
+@import "../../styles/variables";
+
+.input__containerComp {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+
+  .spanComp {
+
+    color: #FF2F2F;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 400;
+    height: 16px;
+    line-height: 8px;
+    max-width: 232px;
+    padding: 7px 0 0
+  }
+
+  .labelComp {
+
+
+    color: #999;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 9px;
+  }
+
+  .inputComp {
+    border-bottom: 1px solid $color_blue;
+    padding-bottom: 7px;
+
+    &::placeholder {
+
+
+      color: #999;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 13px;
+    }
+  }
+
+  .hasError {
+    border-bottom: 1px solid $color_red;
+  }
+}
