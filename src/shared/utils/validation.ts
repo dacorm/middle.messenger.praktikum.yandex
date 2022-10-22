@@ -6,14 +6,32 @@ export const checkEmail = (value: string) => /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@
   value,
 );
 
+export const checkPassword = (value: string) => /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d).*$/.test(value);
+
+export const checkPhone = (value: string) => /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d+)\)?)[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/.test(value);
+
 export const isValid = (input: HTMLInputElement) => {
   if (input.id === 'email') {
     return checkEmail(input.value);
   }
+  if (input.id === 'password') {
+    return checkPassword(input.value);
+  }
+  if (input.id === 'phone') {
+    return checkPhone(input.value);
+  }
   return input.validity.valid;
 };
 
-export const getValidationMsg = (input: HTMLInputElement) => input.validationMessage;
+export const getValidationMsg = (input: HTMLInputElement) => {
+  if (input.id === 'password' && !input.validationMessage) {
+    return 'Пароль не достаточно надежный';
+  }
+  if (input.id === 'phone' && !input.validationMessage) {
+    return 'Неверный формат';
+  }
+  return input.validationMessage;
+};
 
 export const addClass = (cl: string, el: Nullable<HTMLElement>): void => {
   if (el) el.classList.add(cl);

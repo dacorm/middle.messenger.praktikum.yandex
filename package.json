@@ -6,7 +6,8 @@
     "start": "parcel build ./src/index.html && node ./server.js",
     "dev": "parcel ./src/index.html --open",
     "build": "parcel build ./src/index.html",
-    "lint:css": "stylelint-config-prettier-check",
+    "lint:scss": "npx stylelint \"**/*.scss\"",
+    "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "lint:ts": "eslint --ext .ts ./",
     "lint:ts:fix": "eslint --ext .ts ./ --fix"
   },

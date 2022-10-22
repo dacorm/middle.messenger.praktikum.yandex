@@ -19,7 +19,7 @@ export default class ChangeAvatarPage extends Block {
   }
 
   protected customiseComponent() {
-    const form: HTMLFormElement = (
+    const form = (
             this
               .node
               .querySelector('form.overlay__popup') as HTMLFormElement

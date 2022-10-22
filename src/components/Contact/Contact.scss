@@ -1,13 +1,13 @@
 @import "../../styles/variables";
 
 .message {
-  display: flex;
   align-items: flex-start;
-  margin: 0 10px;
-  border-top: 1px solid #EAEAEA;
   border-bottom: 1px solid #EAEAEA;
-  padding: 12px 0;
+  border-top: 1px solid #EAEAEA;
+  display: flex;
   height: fit-content;
+  margin: 0 10px;
+  padding: 12px 0;
 
   &_active {
     background: #E4EDFD;
@@ -19,10 +19,10 @@
   }
 
   &__avatar {
-    width: 47px;
+    border-radius: 50%;
     height: 47px;
     margin-right: 10px;
-    border-radius: 50%;
+    width: 47px;
   }
 
   &__message {
@@ -31,71 +31,71 @@
   }
 
   &__username {
+    color: #1E1E1E;
+    font-size: 13px;
     font-style: normal;
     font-weight: 600;
-    font-size: 13px;
-    line-height: 13px;
-    margin: 0 0 4px 0;
-    color: #1E1E1E;
     height: 13px;
+    line-height: 13px;
+    margin: 0 0 4px;
   }
 
   &__message-text {
+
+    color: #999;
+    font-size: 12px;
     font-style: normal;
     font-weight: 500;
-    font-size: 12px;
     line-height: 15px;
     margin: 0;
     width: 193px;
 
-    color: #999999;
-
     .span {
-      font-style: normal;
-      font-weight: 600;
-      font-size: 12px;
-      line-height: 15px;
 
       color: #1E1E1E;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 15px;
     }
   }
 
   &__bottom {
     display: flex;
-    justify-content: space-between;
     height: 100%;
+    justify-content: space-between;
   }
 
   &__time {
+
+    color: #999;
+    font-size: 9px;
     font-style: normal;
     font-weight: 500;
-    font-size: 9px;
     line-height: 13px;
     margin: 0;
     text-align: right;
-
-    color: #999999;
   }
 
   &__unread {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
     background: $color_blue;
+    border-radius: 50%;
     display: none;
+    height: 20px;
     justify-content: center;
     margin-top: 14px;
+    width: 20px;
 
     &-text {
-      font-style: normal;
-      font-weight: 500;
-      font-size: 11px;
-      line-height: 12px;
 
       align-self: center;
-      text-align: center;
 
-      color: #FFFFFF;
+      color: #FFF;
+      font-size: 11px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 12px;
+      text-align: center;
     }
   }
 }
@@ -105,15 +105,15 @@
 }
 
 .span {
-  display: none;
-  font-style: normal;
-  padding: 0;
-  font-weight: 600;
-  font-size: 12px;
-  margin-right: 3px;
-  line-height: 15px;
 
   color: #1E1E1E;
+  display: none;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 15px;
+  margin-right: 3px;
+  padding: 0;
 }
 
 .spanActive {

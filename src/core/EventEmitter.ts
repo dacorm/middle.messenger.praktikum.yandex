@@ -1,5 +1,7 @@
 import { EventEmitterProps } from '../shared/interfaces';
 
+type callbackFn = (e: Event) => void
+
 export default class EventEmitter implements EventEmitterProps {
   protected _node: HTMLElement;
 
@@ -19,13 +21,13 @@ export default class EventEmitter implements EventEmitterProps {
     }
   }
 
-  add(eventName: string, callback: (e: Event) => void): void {
+  add(eventName: string, callback: callbackFn) {
     this.checkNode();
     this._node.addEventListener(eventName, callback);
     this.events.add({ eventName, callback });
   }
 
-  remove(eventName: string, callback: (e: Event) => void): void {
+  remove(eventName: string, callback: callbackFn): void {
     this.checkNode();
     this._node.removeEventListener(eventName, callback);
     this.events.delete({ eventName, callback });

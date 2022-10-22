@@ -34,8 +34,8 @@ export default class RegistrationPage extends Block {
       type: 'text',
       for: 'login',
       required: true,
-      minlength: 1,
-      maxlength: 25,
+      minlength: 3,
+      maxlength: 20,
       events: {
         blur: handleValidation,
         focus: handleValidation,
@@ -50,8 +50,6 @@ export default class RegistrationPage extends Block {
       type: 'text',
       for: 'first_name',
       required: true,
-      minlength: 1,
-      maxlength: 25,
       events: {
         blur: handleValidation,
         focus: handleValidation,
@@ -66,8 +64,6 @@ export default class RegistrationPage extends Block {
       type: 'text',
       for: 'second_name',
       required: true,
-      minlength: 1,
-      maxlength: 25,
       events: {
         blur: handleValidation,
         focus: handleValidation,
@@ -83,7 +79,7 @@ export default class RegistrationPage extends Block {
       for: 'phone',
       required: true,
       minlength: 1,
-      maxlength: 12,
+      maxlength: 15,
       events: {
         blur: handleValidation,
         focus: handleValidation,
@@ -98,8 +94,8 @@ export default class RegistrationPage extends Block {
       type: 'password',
       for: 'password',
       required: true,
-      minlength: 1,
-      maxlength: 25,
+      minlength: 8,
+      maxlength: 40,
       events: {
         blur: handleValidation,
         focus: handleValidation,
@@ -114,8 +110,8 @@ export default class RegistrationPage extends Block {
       name: 'password_confirm',
       for: 'password_confirm',
       required: true,
-      minlength: 1,
-      maxlength: 25,
+      minlength: 8,
+      maxlength: 40,
       events: {
         blur: handleValidation,
         focus: handleValidation,

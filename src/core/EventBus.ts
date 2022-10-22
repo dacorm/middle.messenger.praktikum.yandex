@@ -1,11 +1,13 @@
+type EventBusListeners = (...args: any) => void;
+
 export default class EventBus {
-  protected listeners: Record<string, ((...args: any) => void)[]>;
+  protected listeners: Record<string, EventBusListeners[]>;
 
   constructor() {
     this.listeners = {};
   }
 
-  on(event: string, callback: (...args: any) => void) {
+  on(event: string, callback: EventBusListeners) {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
@@ -13,7 +15,7 @@ export default class EventBus {
     this.listeners[event].push(callback);
   }
 
-  off(event: string, callback: (...args: any) => void) {
+  off(event: string, callback: EventBusListeners) {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }

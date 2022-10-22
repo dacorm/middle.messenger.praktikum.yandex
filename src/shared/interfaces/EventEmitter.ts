@@ -1,5 +1,7 @@
+export type EventEmitterFunc = (eventName: string, callback: (e: Event) => void) => void
+
 export interface EventEmitterProps {
-    add(eventName: string, callback: (e: Event) => void): void;
-    remove(eventName: string, callback: (e: Event) => void): void;
-    clear(): void;
+    add: EventEmitterFunc,
+    remove: EventEmitterFunc,
+    clear: () => void,
 }

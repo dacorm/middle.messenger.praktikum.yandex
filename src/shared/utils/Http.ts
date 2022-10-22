@@ -15,14 +15,16 @@ export type RequestOptions = {
     data?: any;
 };
 
+type HTTPMethod = (url: string, options?: RequestOptions) => Promise<unknown>
+
 export class Http {
-  get = (url: string, options: RequestOptions = {}) => this.request(url, { ...options, method: METHODS.GET });
+  get: HTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHODS.GET });
 
-  post = (url: string, options: RequestOptions = {}) => this.request(url, { ...options, method: METHODS.POST });
+  post: HTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHODS.POST });
 
-  put = (url: string, options: RequestOptions = {}) => this.request(url, { ...options, method: METHODS.PUT });
+  put: HTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHODS.PUT });
 
-  delete = (url: string, options: RequestOptions = {}) => this.request(url, { ...options, method: METHODS.DELETE });
+  delete: HTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHODS.DELETE });
 
   request = (url: string, options: RequestOptions = {}) => {
     const { headers = {}, method, data } = options;

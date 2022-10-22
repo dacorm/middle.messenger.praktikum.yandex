@@ -6,7 +6,7 @@ import template from './LoginPage.template';
 import { renderInDom } from '../../shared/utils';
 import { RegistrationPage } from '../RegistrationPage';
 import { handleValidation, validateForm } from '../../shared/utils/validation';
-import { Input } from "../../components/Input";
+import { Input } from '../../components/Input';
 
 export default class LoginPage extends Block {
   constructor(props: ComponentProps) {
