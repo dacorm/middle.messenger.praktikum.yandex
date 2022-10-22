@@ -9,6 +9,7 @@ import { Message } from '../../components/Message';
 import camera from '../../assets/images/camera.png';
 import { renderInDom } from '../../shared/utils';
 import { UserSettingsPage } from '../UserSettingsPage';
+import { handleValidation } from '../../shared/utils/validation';
 
 export default class ChatPage extends Block {
   constructor(props: ComponentProps) {
@@ -99,6 +100,16 @@ export default class ChatPage extends Block {
       link.addEventListener('click', () => {
         renderInDom('#root', new UserSettingsPage({}));
       });
+    }
+
+    const input = (
+        this
+          .node
+          .querySelector('input.screen__chat-input-input') as HTMLInputElement
+    );
+
+    if (input) {
+      input.addEventListener('blur', handleValidation);
     }
   }
 }

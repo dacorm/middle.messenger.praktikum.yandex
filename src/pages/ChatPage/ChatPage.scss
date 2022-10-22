@@ -104,6 +104,7 @@
       display: flex;
       margin: 10px;
       padding-top: 12px;
+      position: relative;
 
       &-input {
         background: #EFEFEF;
@@ -122,6 +123,24 @@
           font-weight: 500;
           line-height: 12px;
         }
+      }
+
+      &-span {
+        color: #FF2F2F;
+        font-size: 8px;
+        font-style: normal;
+        font-weight: 400;
+        height: 16px;
+        left: 40px;
+        line-height: 8px;
+        max-width: 232px;
+        padding: 7px 0 0;
+        position: absolute;
+        top: -10px;
+      }
+
+      .hasError {
+        border: 1px solid $color_red;
       }
 
       &-add {

@@ -152,7 +152,7 @@ export default abstract class Block implements Component {
 
       if (this.props?.events) {
         Object.entries(this.props.events).forEach(
-          ([eventName, callback]: [string, () => void]) => {
+          ([eventName, callback]) => {
             this.eventEmitter.add(eventName, callback);
           },
         );

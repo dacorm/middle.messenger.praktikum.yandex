@@ -38,6 +38,18 @@
     width: fit-content;
   }
 
+  .spanStngs {
+
+    color: #FF2F2F;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 400;
+    height: 16px;
+    line-height: 8px;
+    max-width: 232px;
+    padding: 7px 0 0
+  }
+
   .hasError {
     border-bottom: 1px solid $color_red;
   }
