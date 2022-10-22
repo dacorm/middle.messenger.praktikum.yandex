@@ -15,7 +15,7 @@ export type RequestOptions = {
     data?: any;
 };
 
-export class http {
+export class Http {
   get = (url: string, options: RequestOptions = {}) => this.request(url, { ...options, method: METHODS.GET });
 
   post = (url: string, options: RequestOptions = {}) => this.request(url, { ...options, method: METHODS.POST });

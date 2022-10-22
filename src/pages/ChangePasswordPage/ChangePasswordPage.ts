@@ -1,12 +1,12 @@
-import { compile } from 'pug';
+import {compile} from 'pug';
 import Block from '../../core/Block';
-import { ComponentProps } from '../../shared/interfaces';
+import {ComponentProps} from '../../shared/interfaces';
 import './ChangePasswordPage.scss';
 import template from './ChangePasswordPage.template';
-import { SettingsInput } from '../../components/SettingsInput';
-import { renderInDom } from '../../shared/utils';
-import { MainPage } from '../MainPage';
-import { validate, validateForm } from '../../shared/utils/validation';
+import {SettingsInput} from '../../components/SettingsInput';
+import {renderInDom} from '../../shared/utils';
+import {MainPage} from '../MainPage';
+import {handleValidation, validateForm} from '../../shared/utils/validation';
 
 export default class ChangePasswordPage extends Block {
   constructor(props: ComponentProps) {
@@ -19,9 +19,8 @@ export default class ChangePasswordPage extends Block {
       name: 'oldPassword',
       required: true,
       events: {
-        blur: (e: any) => {
-          validate({ hasError: 'hasError' }, e.target);
-        },
+        blur: handleValidation,
+        focus: handleValidation
       },
     });
 
@@ -36,9 +35,8 @@ export default class ChangePasswordPage extends Block {
       minlength: 1,
       maxlength: 25,
       events: {
-        blur: (e: any) => {
-          validate({ hasError: 'hasError' }, e.target);
-        },
+        blur: handleValidation,
+        focus: handleValidation
       },
     });
 
@@ -53,9 +51,8 @@ export default class ChangePasswordPage extends Block {
       minlength: 1,
       maxlength: 25,
       events: {
-        blur: (e: any) => {
-          validate({ hasError: 'hasError' }, e.target);
-        },
+        blur: handleValidation,
+        focus: handleValidation
       },
     });
 
@@ -94,7 +91,7 @@ export default class ChangePasswordPage extends Block {
       });
     }
 
-    const link: HTMLLinkElement = (
+    const link = (
             this
               .node
               .querySelector('a.settings__push-back-button') as HTMLLinkElement

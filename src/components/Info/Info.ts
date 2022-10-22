@@ -6,7 +6,7 @@ import { InfoProps } from '../../shared/interfaces/InfoProps';
 import { renderInDom } from '../../shared/utils';
 import { MainPage } from '../../pages/MainPage';
 
-export default class Input extends Block implements InfoProps {
+export default class Info extends Block implements InfoProps {
   protected props: InfoProps;
 
   protected get proplist() {
