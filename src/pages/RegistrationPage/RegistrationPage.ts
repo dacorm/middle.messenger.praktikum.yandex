@@ -1,12 +1,12 @@
-import { compile } from 'pug';
+import {compile} from 'pug';
 import Block from '../../core/Block';
-import { ComponentProps } from '../../shared/interfaces';
+import {ComponentProps} from '../../shared/interfaces';
 import './RegistrationPage.scss';
 import template from './RegistrationPage.template';
-import { Input } from '../../components/Input';
-import { renderInDom } from '../../shared/utils';
-import { LoginPage } from '../LoginPage';
-import { validate, validateForm } from '../../shared/utils/validation';
+import {Input} from '../../components/Input';
+import {renderInDom} from '../../shared/utils';
+import {LoginPage} from '../LoginPage';
+import {handleValidation, validateForm} from '../../shared/utils/validation';
 
 export default class RegistrationPage extends Block {
   constructor(props: ComponentProps) {
@@ -21,9 +21,8 @@ export default class RegistrationPage extends Block {
       minlength: 1,
       maxlength: 25,
       events: {
-        blur: (e: any) => {
-          validate({ hasError: 'hasError' }, e.target);
-        },
+        blur: handleValidation,
+        focus: handleValidation
       },
     });
 
@@ -38,9 +37,8 @@ export default class RegistrationPage extends Block {
       minlength: 1,
       maxlength: 25,
       events: {
-        blur: (e: any) => {
-          validate({ hasError: 'hasError' }, e.target);
-        },
+        blur: handleValidation,
+        focus: handleValidation
       },
     });
 
@@ -55,9 +53,8 @@ export default class RegistrationPage extends Block {
       minlength: 1,
       maxlength: 25,
       events: {
-        blur: (e: any) => {
-          validate({ hasError: 'hasError' }, e.target);
-        },
+        blur: handleValidation,
+        focus: handleValidation
       },
     });
 
@@ -72,9 +69,8 @@ export default class RegistrationPage extends Block {
       minlength: 1,
       maxlength: 25,
       events: {
-        blur: (e: any) => {
-          validate({ hasError: 'hasError' }, e.target);
-        },
+        blur: handleValidation,
+        focus: handleValidation
       },
     });
 
@@ -89,9 +85,8 @@ export default class RegistrationPage extends Block {
       minlength: 1,
       maxlength: 12,
       events: {
-        blur: (e: any) => {
-          validate({ hasError: 'hasError' }, e.target);
-        },
+        blur: handleValidation,
+        focus: handleValidation
       },
     });
 
@@ -106,9 +101,8 @@ export default class RegistrationPage extends Block {
       minlength: 1,
       maxlength: 25,
       events: {
-        blur: (e: any) => {
-          validate({ hasError: 'hasError' }, e.target);
-        },
+        blur: handleValidation,
+        focus: handleValidation
       },
     });
 
@@ -123,9 +117,8 @@ export default class RegistrationPage extends Block {
       minlength: 1,
       maxlength: 25,
       events: {
-        blur: (e: any) => {
-          validate({ hasError: 'hasError' }, e.target);
-        },
+        blur: handleValidation,
+        focus: handleValidation
       },
     });
 
