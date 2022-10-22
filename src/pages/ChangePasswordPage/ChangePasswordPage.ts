@@ -1,12 +1,12 @@
-import {compile} from 'pug';
+import { compile } from 'pug';
 import Block from '../../core/Block';
-import {ComponentProps} from '../../shared/interfaces';
+import { ComponentProps } from '../../shared/interfaces';
 import './ChangePasswordPage.scss';
 import template from './ChangePasswordPage.template';
-import {SettingsInput} from '../../components/SettingsInput';
-import {renderInDom} from '../../shared/utils';
-import {MainPage} from '../MainPage';
-import {handleValidation, validateForm} from '../../shared/utils/validation';
+import { SettingsInput } from '../../components/SettingsInput';
+import { renderInDom } from '../../shared/utils';
+import { MainPage } from '../MainPage';
+import { handleValidation, validateForm } from '../../shared/utils/validation';
 
 export default class ChangePasswordPage extends Block {
   constructor(props: ComponentProps) {
@@ -20,7 +20,7 @@ export default class ChangePasswordPage extends Block {
       required: true,
       events: {
         blur: handleValidation,
-        focus: handleValidation
+        focus: handleValidation,
       },
     });
 
@@ -36,7 +36,7 @@ export default class ChangePasswordPage extends Block {
       maxlength: 25,
       events: {
         blur: handleValidation,
-        focus: handleValidation
+        focus: handleValidation,
       },
     });
 
@@ -52,7 +52,7 @@ export default class ChangePasswordPage extends Block {
       maxlength: 25,
       events: {
         blur: handleValidation,
-        focus: handleValidation
+        focus: handleValidation,
       },
     });
 

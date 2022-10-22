@@ -2,18 +2,15 @@ type classes = Record<string, string>
 
 type Nullable<T> = T | null;
 
-export const checkEmail = (value: string) => {
-  return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-      value
-  );
-};
+export const checkEmail = (value: string) => /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+  value,
+);
 
 export const isValid = (input: HTMLInputElement) => {
   if (input.id === 'email') {
     return checkEmail(input.value);
-  } else {
-    return input.validity.valid
   }
+  return input.validity.valid;
 };
 
 export const getValidationMsg = (input: HTMLInputElement) => input.validationMessage;
@@ -62,4 +59,4 @@ export const validateForm = (inputs: NodeListOf<HTMLInputElement>) => {
 
 export const handleValidation = (e: FocusEvent) => {
   validate({ hasError: 'hasError' }, e.target as HTMLInputElement);
-}
+};

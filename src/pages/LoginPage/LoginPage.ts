@@ -1,12 +1,12 @@
-import {compile} from 'pug';
+import { compile } from 'pug';
 import Block from '../../core/Block';
-import {ComponentProps} from '../../shared/interfaces';
+import { ComponentProps } from '../../shared/interfaces';
 import './LoginPage.scss';
 import template from './LoginPage.template';
-import {Input} from '../../components/Input';
-import {renderInDom} from '../../shared/utils';
-import {RegistrationPage} from '../RegistrationPage';
-import {handleValidation, validateForm} from '../../shared/utils/validation';
+import { renderInDom } from '../../shared/utils';
+import { RegistrationPage } from '../RegistrationPage';
+import { handleValidation, validateForm } from '../../shared/utils/validation';
+import { Input } from "../../components/Input";
 
 export default class LoginPage extends Block {
   constructor(props: ComponentProps) {
@@ -20,7 +20,7 @@ export default class LoginPage extends Block {
       required: true,
       events: {
         blur: handleValidation,
-        focus: handleValidation
+        focus: handleValidation,
       },
     });
 
@@ -34,7 +34,7 @@ export default class LoginPage extends Block {
       required: true,
       events: {
         blur: handleValidation,
-        focus: handleValidation
+        focus: handleValidation,
       },
     });
 
