@@ -10,6 +10,8 @@ export const checkPassword = (value: string) => /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*
 
 export const checkPhone = (value: string) => /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d+)\)?)[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/.test(value);
 
+export const checkName = (value: string) => /^[а-яА-я][а-яА-Я0-9-_\.]{1,20}$/.test(value);
+
 export const isValid = (input: HTMLInputElement) => {
   if (input.id === 'email') {
     return checkEmail(input.value);
@@ -20,6 +22,9 @@ export const isValid = (input: HTMLInputElement) => {
   if (input.id === 'phone') {
     return checkPhone(input.value);
   }
+  if (input.id === 'first_name' || input.id === 'second_name') {
+    return checkName(input.value);
+  }
   return input.validity.valid;
 };
 
@@ -29,6 +34,12 @@ export const getValidationMsg = (input: HTMLInputElement) => {
   }
   if (input.id === 'phone' && !input.validationMessage) {
     return 'Неверный формат';
+  }
+  if (input.id === 'first_name' && !input.validationMessage) {
+    return 'Имя должно начинаться с буквы'
+  }
+  if (input.id === 'second_name' && !input.validationMessage) {
+    return 'Фамилия должна начинаться с буквы'
   }
   return input.validationMessage;
 };
