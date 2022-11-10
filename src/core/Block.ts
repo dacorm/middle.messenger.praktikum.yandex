@@ -86,6 +86,10 @@ export default abstract class Block implements Component {
     return this.node;
   }
 
+  leave() {
+    this.eventBus().emit(EVENTS.FLOW_CDU);
+  }
+
   componentDidMount() {}
 
     abstract render(): string;
