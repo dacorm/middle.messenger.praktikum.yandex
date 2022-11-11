@@ -41,8 +41,8 @@ export default class MainPage extends Block {
       events: {
         click: () => {
           renderInDom('#root', new ErrorPage({}, {
-            error: '404',
-            message: 'Не туда попали',
+              error: '404',
+              message: 'Не туда попали',
           }));
         },
       },
@@ -54,8 +54,8 @@ export default class MainPage extends Block {
       events: {
         click: () => {
           renderInDom('#root', new ErrorPage({}, {
-            error: '500',
-            message: 'Мы уже фиксим',
+              error: '500',
+              message: 'Мы уже фиксим',
           }));
         },
       },

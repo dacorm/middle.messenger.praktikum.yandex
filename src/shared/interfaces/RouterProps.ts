@@ -3,9 +3,10 @@ import {RouteProps} from "./RouteProps";
 
 export interface RouterProps {
     pathname: string;
-    block: Block;
-    props: RouteProps;
-    exact: boolean;
-    needAuth: boolean;
-    onNonauthorized: any;
+    block: typeof Block;
+    props?: RouteProps;
+    exact?: boolean;
+    needAuth?: boolean;
+    onNonauthorized?: any;
+    isAuth?: boolean;
 }

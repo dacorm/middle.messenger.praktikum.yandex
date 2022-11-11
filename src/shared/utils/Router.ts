@@ -1,5 +1,6 @@
 import {Route} from "./Route";
 import {RouterProps} from "../interfaces/RouterProps";
+import Block from "../../core/Block";
 
 export default class Router {
     private static __instance: Router;
@@ -27,7 +28,7 @@ export default class Router {
     use({pathname, block, props = {}, exact = true, needAuth = false, onNonauthorized}: RouterProps) {
         const route = new Route(
             pathname,
-            block,
+            block as unknown as Block,
             {rootQuery: this._rootQuery, exact},
             props,
             needAuth,
@@ -38,8 +39,8 @@ export default class Router {
     }
 
     start() {
-        window.onpopstate = (event: any) => {
-            this._onRoute(event.currentTarget?.location.pathname);
+        window.onpopstate = (event: PopStateEvent) => {
+            this._onRoute((event.currentTarget as typeof window).location.pathname);
         };
         this._onRoute(window.location.pathname);
     }
