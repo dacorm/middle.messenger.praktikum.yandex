@@ -3,21 +3,21 @@ import {LoginPage} from "./pages/LoginPage";
 import {RegistrationPage} from "./pages/RegistrationPage";
 import ChatPage from "./pages/ChatPage/ChatPage";
 import {UserSettingsPage} from "./pages/UserSettingsPage";
-import { ErrorPage } from "./pages/ErrorPage";
+import {ErrorPage} from "./pages/ErrorPage";
 import Block from "./core/Block";
+import AuthController from "./controllers/AuthController";
+import { UserData } from "./store/Store";
 
 const router = new Router('#root');
 
 async function init() {
-    let currentUser = null;
+    let currentUser: UserData | null = null;
     let isAuth = !!currentUser;
 
     const checkAuth = async () => {
         try {
-            currentUser = {
-                firstName: 'Denis',
-                lastName: 'Utkin',
-            }
+            currentUser = await AuthController.checkUser();
+
             return true
         } catch (e) {
             Router.getInstance().go('/');
@@ -25,7 +25,12 @@ async function init() {
         }
     };
 
-    await checkAuth();
+    await checkAuth().then(() => {
+        if (currentUser) {
+            console.log('here');
+            Router.getInstance().go('/messenger');
+        }
+    });
 
     router
 

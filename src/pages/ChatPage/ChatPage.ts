@@ -1,15 +1,14 @@
-import { compile } from 'pug';
+import {compile} from 'pug';
 import Block from '../../core/Block';
-import { ComponentProps } from '../../shared/interfaces';
+import {ComponentProps} from '../../shared/interfaces';
 import './ChatPage.scss';
 import template from './ChatPage.template';
-import { Contact } from '../../components/Contact';
+import {Contact} from '../../components/Contact';
 import avatar from '../../assets/images/Ellipse.png';
-import { Message } from '../../components/Message';
+import {Message} from '../../components/Message';
 import camera from '../../assets/images/camera.png';
-import { renderInDom } from '../../shared/utils';
-import { UserSettingsPage } from '../UserSettingsPage';
-import { handleValidation } from '../../shared/utils/validation';
+import {handleValidation} from '../../shared/utils/validation';
+import Router from "../../shared/utils/Router";
 
 export default class ChatPage extends Block {
   constructor(props: ComponentProps) {
@@ -98,7 +97,7 @@ export default class ChatPage extends Block {
 
     if (link) {
       link.addEventListener('click', () => {
-        renderInDom('#root', new UserSettingsPage({}));
+        Router.getInstance().go('/settings');
       });
     }
 

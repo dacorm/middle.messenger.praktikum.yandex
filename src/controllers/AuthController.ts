@@ -25,6 +25,12 @@ class AuthController {
 
         store.set('currentUser', userData);
     }
+
+    async checkUser() {
+        const userData = await this.api.read();
+
+        return userData;
+    }
 }
 
 export default new AuthController();

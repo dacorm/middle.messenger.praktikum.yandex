@@ -156,8 +156,8 @@ export default class RegistrationPage extends Block {
         isValid = validateForm(inputs);
         if (isValid) {
           AuthController.signUp(data as unknown as SignUpData)
-              .then((res) => {
-                console.log(res)
+              .then(() => {
+                Router.getInstance().go('/messenger');
               }).catch((e) => {
             alert(e);
           })
