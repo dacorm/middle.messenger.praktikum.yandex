@@ -6,6 +6,8 @@ import template from './UserSettingsPage.template';
 import {SettingsInput} from '../../components/SettingsInput';
 import {handleValidation, validateForm} from '../../shared/utils/validation';
 import Router from "../../shared/utils/Router";
+import {store} from "../../store/Store";
+import AuthController from "../../controllers/AuthController";
 
 export default class UserSettingsPage extends Block {
   constructor(props: ComponentProps) {
@@ -115,6 +117,13 @@ export default class UserSettingsPage extends Block {
         displayName: displayName.content,
         phone: phone.content,
       },
+    });
+  }
+
+  componentDidMount() {
+    AuthController.fetchUser().then(() => {
+      console.log(store.getState());
+      console.log(this.node.querySelector('[name="email"]'));
     });
   }
 

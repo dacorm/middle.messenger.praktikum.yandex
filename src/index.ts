@@ -1,8 +1,8 @@
 import Router from "./shared/utils/Router";
 import {LoginPage} from "./pages/LoginPage";
 import {RegistrationPage} from "./pages/RegistrationPage";
-import ChatPage from "./pages/ChatPage/ChatPage";
-import {UserSettingsPage} from "./pages/UserSettingsPage";
+import { ChatPage } from "./pages/ChatPage";
+import userSettingsWithStore from "./pages/UserSettingsPage";
 import {ErrorPage} from "./pages/ErrorPage";
 import Block from "./core/Block";
 import AuthController from "./controllers/AuthController";
@@ -10,7 +10,7 @@ import { UserData } from "./store/Store";
 
 const router = new Router('#root');
 
-async function init() {
+async function prepare() {
     let currentUser: UserData | null = null;
     let isAuth = !!currentUser;
 
@@ -45,7 +45,7 @@ async function init() {
             exact: false, needAuth: true, isAuth: isAuth, onNonauthorized: checkAuth,
         })
         .use({
-            pathname: '/settings', block: UserSettingsPage,
+            pathname: '/settings', block: userSettingsWithStore,
             exact: false, needAuth: true, isAuth: isAuth, onNonauthorized: checkAuth,
         })
         .use({pathname: '/500', block: ErrorPage as unknown as typeof Block, props: {error: 404}})
@@ -54,4 +54,4 @@ async function init() {
 
 }
 
-init();
+prepare();

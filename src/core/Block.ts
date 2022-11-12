@@ -17,7 +17,7 @@ enum EVENTS {
   FLOW_RENDER = 'flow:render',
 }
 
-export default abstract class Block implements Component {
+export default class Block implements Component {
   protected props: ComponentProps;
 
   protected eventBus: () => EventBus;
@@ -92,7 +92,7 @@ export default abstract class Block implements Component {
 
   componentDidMount() {}
 
-    abstract render(): string;
+  render() {}
 
     _componentDidUpdate() {
       const response = this.componentDidUpdate();
@@ -127,7 +127,7 @@ export default abstract class Block implements Component {
         }
       }
 
-      const html = this.render();
+      const html: string = (this.render() as unknown as string);
       const divElement = document.createElement('div');
       divElement.innerHTML = html.trim();
       divElement.querySelectorAll('[data-props]').forEach((el) => {

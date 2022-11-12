@@ -1,4 +1,4 @@
-type EventBusListeners = (...args: any) => void;
+type EventBusListeners = (...args: unknown[]) => void;
 
 export default class EventBus {
   protected listeners: Record<string, EventBusListeners[]>;
@@ -25,7 +25,7 @@ export default class EventBus {
     );
   }
 
-  emit(event: string, ...args: any) {
+  emit(event: string, ...args: unknown[]) {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }

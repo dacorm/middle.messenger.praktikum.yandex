@@ -62,7 +62,6 @@ export const store = new Store();
 export const connect = (mapStateToProps: (state: StoreType) => Record<string, unknown>) => (Component: typeof Block) => {
     let state: Record<string, unknown>;
 
-    // @ts-ignore
     return class extends Component {
         constructor(props: any) {
             state = mapStateToProps(store.getState() as StoreType);
@@ -71,7 +70,6 @@ export const connect = (mapStateToProps: (state: StoreType) => Record<string, un
 
             store.on(StoreEvents.UPDATED, () => {
                 const newState = mapStateToProps(store.getState() as StoreType);
-
                 if (!isDeepEqual(state, newState)) {
                     this.setProps({ ...newState } as ComponentProps);
                 }

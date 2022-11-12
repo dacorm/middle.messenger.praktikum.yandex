@@ -9,7 +9,6 @@ import { RegistrationPage } from '../RegistrationPage';
 import { ErrorPage } from '../ErrorPage';
 import { Button } from '../../components/Button';
 import ChatPage from '../ChatPage/ChatPage';
-import { UserSettingsPage } from '../UserSettingsPage';
 import { ChangePasswordPage } from '../ChangePasswordPage';
 import { ChangeAvatarPage } from '../ChangeAvatarPage';
 
@@ -61,16 +60,6 @@ export default class MainPage extends Block {
       },
     });
 
-    const userSettings = new Button({
-      child: 'userSettings',
-      secondary: true,
-      events: {
-        click: () => {
-          renderInDom('#root', new UserSettingsPage({}));
-        },
-      },
-    });
-
     const chat = new Button({
       child: 'chat',
       secondary: true,
@@ -108,7 +97,6 @@ export default class MainPage extends Block {
         loginPage: loginButton.content,
         404: err404.content,
         500: err500.content,
-        userSettings: userSettings.content,
         chat: chat.content,
         changePassword: changePass.content,
         changeAvatar: changeAvatar.content,

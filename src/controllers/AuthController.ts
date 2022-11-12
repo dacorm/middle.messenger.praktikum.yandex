@@ -21,15 +21,15 @@ class AuthController {
     }
 
     async fetchUser() {
-        const userData = await this.api.read();
+        const user = await this.api.read();
 
-        store.set('currentUser', userData);
+        store.set('currentUser', user);
     }
 
     async checkUser() {
-        const userData = await this.api.read();
+        const user = await this.api.read();
 
-        return userData;
+        return user;
     }
 }
 
