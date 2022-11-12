@@ -1,5 +1,3 @@
-import { queryStringify } from './queryStringify';
-
 enum METHODS {
     GET = 'GET',
     POST = 'POST',
@@ -10,60 +8,82 @@ enum METHODS {
 
 export type RequestOptions = {
     headers?: Record<string, string>;
-    method?: string;
+    method: string;
     timeout?: number;
     data?: any;
 };
 
-type HTTPMethod = (url: string, options?: RequestOptions) => Promise<unknown>
+const baseUrl = 'https://ya-praktikum.tech/api/v2';
 
 export class Http {
-  get: HTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHODS.GET });
+    async get<TResponse>(url: string, data?: {}): Promise<TResponse> {
+        return this.request(url, {method: METHODS.GET, data});
+    }
 
-  post: HTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHODS.POST });
+    async post<TResponse>(url: string, data: {}): Promise<TResponse> {
+        return this.request(url, {method: METHODS.POST, data});
+    }
 
-  put: HTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHODS.PUT });
+    async put<TResponse>(url: string, data: {}): Promise<TResponse> {
+        return this.request(url, {method: METHODS.PUT, data});
+    }
 
-  delete: HTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHODS.DELETE });
+    async delete<TResponse>(url: string, data: {}): Promise<TResponse> {
+        return this.request(url, {method: METHODS.DELETE, data});
+    }
 
-  request = (url: string, options: RequestOptions = {}) => {
-    const { headers = {}, method, data } = options;
+    async request<TResponse>(
+        url: string,
+        options: RequestOptions = {method: METHODS.GET},
+    ): Promise<TResponse> {
+        return new Promise((resolve, reject) => {
+            const {method, data} = options;
 
-    return new Promise((resolve, reject) => {
-      if (!method) {
-        reject('No method');
-        return;
-      }
+            const xhr = new XMLHttpRequest();
 
-      const xhr = new XMLHttpRequest();
-      const isGet = method === METHODS.GET;
+            if (method === METHODS.GET) {
+                if (data) {
+                    url = `${url}?${Object.entries(data)
+                        .map(([key, value]: [key: string, value: any]): string => {
+                            return `${key}=${value}`;
+                        })
+                        .join('&')}`;
+                }
+            }
 
-      xhr.open(
-        method,
-        isGet && !!data
-          ? `${url}${queryStringify(data)}`
-          : url,
-      );
+            xhr.open(method, baseUrl + url);
+            xhr.withCredentials = true;
 
-      Object.keys(headers).forEach((key) => {
-        xhr.setRequestHeader(key, headers[key]);
-      });
+            xhr.onload = function () {
+                let resp;
+                if (~xhr?.getResponseHeader('Content-Type')?.indexOf('application/json')!) {
+                    resp = JSON.parse(xhr.response)
+                } else {
+                    resp = xhr.response;
+                }
+                if (xhr.status === 200) {
+                    resolve(resp);
 
-      xhr.onload = function () {
-        resolve(xhr);
-      };
+                } else {
+                    reject(resp);
+                }
+            };
 
-      xhr.onabort = reject;
-      xhr.onerror = reject;
+            xhr.onabort = reject;
+            xhr.onerror = reject;
+            xhr.ontimeout = reject;
 
-      xhr.timeout = options.timeout || 5000;
-      xhr.ontimeout = reject;
+            if (method === METHODS.GET || !data) {
+                xhr.send();
+            } else {
+                if (data instanceof FormData) {
+                    xhr.send(data);
+                } else {
+                    xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+                    xhr.send(JSON.stringify(data));
+                }
 
-      if (isGet || !data) {
-        xhr.send();
-      } else {
-        xhr.send(data);
-      }
-    });
-  };
+            }
+        });
+    }
 }

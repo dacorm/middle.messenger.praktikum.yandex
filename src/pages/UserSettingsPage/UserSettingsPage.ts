@@ -1,12 +1,11 @@
-import { compile } from 'pug';
+import {compile} from 'pug';
 import Block from '../../core/Block';
-import { ComponentProps } from '../../shared/interfaces';
+import {ComponentProps} from '../../shared/interfaces';
 import './UserSettingsPage.scss';
 import template from './UserSettingsPage.template';
-import { SettingsInput } from '../../components/SettingsInput';
-import { renderInDom } from '../../shared/utils';
-import { MainPage } from '../MainPage';
-import { handleValidation, validateForm } from '../../shared/utils/validation';
+import {SettingsInput} from '../../components/SettingsInput';
+import {handleValidation, validateForm} from '../../shared/utils/validation';
+import Router from "../../shared/utils/Router";
 
 export default class UserSettingsPage extends Block {
   constructor(props: ComponentProps) {
@@ -153,7 +152,7 @@ export default class UserSettingsPage extends Block {
 
     if (link) {
       link.addEventListener('click', () => {
-        renderInDom('#root', new MainPage({}));
+        Router.getInstance().back();
       });
     }
   }

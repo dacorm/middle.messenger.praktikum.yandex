@@ -28,6 +28,7 @@ async function init() {
     await checkAuth();
 
     router
+
         .use({
             pathname: '/', block: LoginPage, props: {user: currentUser}
         })
