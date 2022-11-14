@@ -168,7 +168,7 @@ export default class UserSettingsPage extends Block {
           }).then(() => {
             alert('Профиль успешно изменен');
           }).then(() => {
-            window.location.reload();
+            Router.getInstance().go('/profile');
           }).catch((e) => {
             alert(e);
           })

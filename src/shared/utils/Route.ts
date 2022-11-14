@@ -71,9 +71,11 @@ export class Route {
                 // @ts-ignore
                 this._block = new this._blockClass({...this._componentProps, router: {params: this.getParams()}});
                 renderInDom(this._props.rootQuery, this._block);
+                this._block.componentDidMount();
             } else {
                 this._block.setProps({...this._componentProps, router: {params: this._params}});
                 renderInDom(this._props.rootQuery, this._block);
+                this._block.componentDidMount();
             }
         }
     }

@@ -70,6 +70,7 @@ export const connect = (mapStateToProps: (state: StoreType) => Record<string, un
 
             store.on(StoreEvents.UPDATED, () => {
                 const newState = mapStateToProps(store.getState() as StoreType);
+
                 if (!isDeepEqual(state, newState)) {
                     this.setProps({ ...newState } as ComponentProps);
                 }

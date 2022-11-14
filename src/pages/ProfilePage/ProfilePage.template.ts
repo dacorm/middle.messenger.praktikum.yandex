@@ -1,7 +1,7 @@
 export default `
 div.profile
         div.profile__avatar
-        div.profile__container(id='userSettings')
+        div.profile__container
             div.property__container
                 p.property__label Почта
                 p.property__text(id='email')

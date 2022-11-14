@@ -78,7 +78,6 @@ export default class ProfilePage extends Block {
     }
 
     protected customiseComponent() {
-        this.componentDidUpdate();
         const link: HTMLLinkElement = (
             this
                 .node
