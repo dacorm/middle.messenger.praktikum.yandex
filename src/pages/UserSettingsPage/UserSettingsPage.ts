@@ -135,6 +135,8 @@ export default class UserSettingsPage extends Block {
   componentDidMount() {
     AuthController.fetchUser().then(() => {
       this._updateUserInfo();
+    }).catch((e) => {
+      alert(e);
     });
   }
 
@@ -163,6 +165,12 @@ export default class UserSettingsPage extends Block {
         if (isValid) {
           UserController.updateProfile(data as unknown as ProfileData).then(() => {
             this._updateUserInfo();
+          }).then(() => {
+            alert('Профиль успешно изменен');
+          }).then(() => {
+            window.location.reload();
+          }).catch((e) => {
+            alert(e);
           })
         }
       });

@@ -7,6 +7,7 @@ import {ErrorPage} from "./pages/ErrorPage";
 import Block from "./core/Block";
 import AuthController from "./controllers/AuthController";
 import { UserData } from "./store/Store";
+import ProfilePage from "./pages/ProfilePage";
 
 const router = new Router('#root');
 
@@ -42,6 +43,10 @@ async function prepare() {
         })
         .use({
             pathname: '/messenger', block: ChatPage, props: {},
+            exact: false, needAuth: true, isAuth: isAuth, onNonauthorized: checkAuth,
+        })
+        .use({
+            pathname: '/profile', block: ProfilePage, props: {},
             exact: false, needAuth: true, isAuth: isAuth, onNonauthorized: checkAuth,
         })
         .use({

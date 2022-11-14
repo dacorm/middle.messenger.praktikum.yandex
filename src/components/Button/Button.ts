@@ -12,6 +12,7 @@ export default class Button extends Block implements ButtonProps {
   get className(): string {
     return classNames('button', {
       link: this.props.secondary,
+      red: this.props.red,
     }, []);
   }
 

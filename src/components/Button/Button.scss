@@ -24,7 +24,11 @@
   font-weight: 500;
   line-height: 11px;
   margin-top: 14px;
-  padding-bottom: 30px;
-
+  padding-bottom: 10px;
+  align-self: baseline;
   text-align: center;
+}
+
+.red {
+  color: $color_red;
 }

@@ -97,7 +97,7 @@ export default class ChatPage extends Block {
 
     if (link) {
       link.addEventListener('click', () => {
-        Router.getInstance().go('/settings');
+        Router.getInstance().go('/profile');
       });
     }
 
