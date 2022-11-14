@@ -6,8 +6,10 @@ import template from './UserSettingsPage.template';
 import {SettingsInput} from '../../components/SettingsInput';
 import {handleValidation, validateForm} from '../../shared/utils/validation';
 import Router from "../../shared/utils/Router";
-import {store} from "../../store/Store";
+import {store, UserData} from "../../store/Store";
 import AuthController from "../../controllers/AuthController";
+import UserController from "../../controllers/UserController";
+import {ProfileData} from "../../shared/interfaces/ProfileData";
 
 export default class UserSettingsPage extends Block {
   constructor(props: ComponentProps) {
@@ -120,10 +122,19 @@ export default class UserSettingsPage extends Block {
     });
   }
 
+  _updateUserInfo() {
+    const { currentUser } = store.getState();
+    (this.node.querySelector('[name="email"]') as HTMLInputElement)!.value = (currentUser as UserData).email as string || '';
+    (this.node.querySelector('[name="login"]') as HTMLInputElement)!.value = (currentUser as UserData).login as string || '';
+    (this.node.querySelector('[name="first_name"]') as HTMLInputElement)!.value = (currentUser as UserData).first_name as string || '';
+    (this.node.querySelector('[name="second_name"]') as HTMLInputElement)!.value = (currentUser as UserData).second_name as string || '';
+    (this.node.querySelector('[name="display_name"]') as HTMLInputElement)!.value = (currentUser as UserData).display_name as string || '';
+    (this.node.querySelector('[name="phone"]') as HTMLInputElement)!.value = (currentUser as UserData).phone as string || '';
+  }
+
   componentDidMount() {
     AuthController.fetchUser().then(() => {
-      console.log(store.getState());
-      console.log(this.node.querySelector('[name="email"]'));
+      this._updateUserInfo();
     });
   }
 
@@ -144,12 +155,16 @@ export default class UserSettingsPage extends Block {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(form);
-        console.log(Object.fromEntries(formData.entries()));
+        const data = Object.fromEntries(formData.entries())
 
         const inputs = form.querySelectorAll('input');
 
         isValid = validateForm(inputs);
-        console.log(isValid ? 'Форма валидна' : 'Форма не валидна');
+        if (isValid) {
+          UserController.updateProfile(data as unknown as ProfileData).then(() => {
+            this._updateUserInfo();
+          })
+        }
       });
     }
 
