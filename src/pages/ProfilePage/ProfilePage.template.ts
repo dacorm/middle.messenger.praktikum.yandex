@@ -1,6 +1,8 @@
 export default `
 div.profile
-        div.profile__avatar
+        div.profile__avatar-container
+            img.profile__avatar(src='')
+            div.profile__avatar-overlay Изменить
         div.profile__container
             div.property__container
                 p.property__label Почта

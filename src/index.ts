@@ -3,6 +3,8 @@ import {LoginPage} from "./pages/LoginPage";
 import {RegistrationPage} from "./pages/RegistrationPage";
 import { ChatPage } from "./pages/ChatPage";
 import userSettingsWithStore from "./pages/UserSettingsPage";
+import avatarWithStore from './pages/ChangeAvatarPage';
+import passwordWithStore from './pages/ChangePasswordPage';
 import {ErrorPage} from "./pages/ErrorPage";
 import Block from "./core/Block";
 import AuthController from "./controllers/AuthController";
@@ -51,6 +53,14 @@ async function prepare() {
         })
         .use({
             pathname: '/settings', block: userSettingsWithStore,
+            exact: false, needAuth: true, isAuth: isAuth, onNonauthorized: checkAuth,
+        })
+        .use({
+            pathname: '/avatar', block: avatarWithStore,
+            exact: false, needAuth: true, isAuth: isAuth, onNonauthorized: checkAuth,
+        })
+        .use({
+            pathname: '/password', block: passwordWithStore,
             exact: false, needAuth: true, isAuth: isAuth, onNonauthorized: checkAuth,
         })
         .use({pathname: '/500', block: ErrorPage as unknown as typeof Block, props: {error: 404}})

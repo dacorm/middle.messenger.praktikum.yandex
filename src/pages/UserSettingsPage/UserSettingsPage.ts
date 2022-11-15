@@ -10,6 +10,7 @@ import {store, UserData} from "../../store/Store";
 import AuthController from "../../controllers/AuthController";
 import UserController from "../../controllers/UserController";
 import {ProfileData} from "../../shared/interfaces/ProfileData";
+import {avatarUrlGenerator} from "../../shared/utils/avatarUrlGenerator";
 
 export default class UserSettingsPage extends Block {
   constructor(props: ComponentProps) {
@@ -130,13 +131,14 @@ export default class UserSettingsPage extends Block {
     (this.node.querySelector('[name="second_name"]') as HTMLInputElement)!.value = (currentUser as UserData).second_name as string || '';
     (this.node.querySelector('[name="display_name"]') as HTMLInputElement)!.value = (currentUser as UserData).display_name as string || '';
     (this.node.querySelector('[name="phone"]') as HTMLInputElement)!.value = (currentUser as UserData).phone as string || '';
+    (this.node.querySelector('img.profile__avatar') as HTMLImageElement)!.src = avatarUrlGenerator((currentUser as UserData).avatar);
   }
 
   componentDidMount() {
     AuthController.fetchUser().then(() => {
       this._updateUserInfo();
     }).catch((e) => {
-      alert(e);
+      alert(e.reason);
     });
   }
 

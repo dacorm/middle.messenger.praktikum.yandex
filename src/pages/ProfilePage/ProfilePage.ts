@@ -7,6 +7,7 @@ import AuthController from "../../controllers/AuthController";
 import {Button} from "../../components/Button";
 import Router from "../../shared/utils/Router";
 import {store, UserData} from "../../store/Store";
+import {avatarUrlGenerator} from "../../shared/utils/avatarUrlGenerator";
 
 export default class ProfilePage extends Block {
     constructor(props: ComponentProps) {
@@ -25,7 +26,7 @@ export default class ProfilePage extends Block {
             secondary: true,
             events: {
                 click: () => {
-                    Router.getInstance().go('/messenger');
+                    Router.getInstance().go('/password');
                 },
             },
         });
@@ -56,13 +57,14 @@ export default class ProfilePage extends Block {
     }
 
     _updateUserInfo() {
-        const { currentUser } = store.getState();
+        const {currentUser} = store.getState();
         (this.node.querySelector('#email') as HTMLParagraphElement)!.textContent = (currentUser as UserData).email as string || '';
         (this.node.querySelector('#login') as HTMLParagraphElement)!.textContent = (currentUser as UserData).login as string || '';
         (this.node.querySelector('#firstName') as HTMLParagraphElement)!.textContent = (currentUser as UserData).first_name as string || '';
         (this.node.querySelector('#secondName') as HTMLParagraphElement)!.textContent = (currentUser as UserData).second_name as string || '';
         (this.node.querySelector('#displayName') as HTMLParagraphElement)!.textContent = (currentUser as UserData).display_name as string || '';
         (this.node.querySelector('#phone') as HTMLParagraphElement)!.textContent = (currentUser as UserData).phone as string || '';
+        (this.node.querySelector('img.profile__avatar') as HTMLImageElement)!.src = avatarUrlGenerator((currentUser as UserData).avatar);
     }
 
     componentDidMount() {
@@ -78,6 +80,18 @@ export default class ProfilePage extends Block {
     }
 
     protected customiseComponent() {
+        const avatar: HTMLDivElement = (
+            this
+                .node
+                .querySelector('div.profile__avatar-overlay') as HTMLDivElement
+        )
+
+        if (avatar) {
+            avatar.addEventListener('click', () => {
+                Router.getInstance().go('/avatar');
+            })
+        }
+
         const link: HTMLLinkElement = (
             this
                 .node
