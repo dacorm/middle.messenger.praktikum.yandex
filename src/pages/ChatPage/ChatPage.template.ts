@@ -16,10 +16,6 @@ export default `div.screen
                     img.input-placeholder__placeholder(src='${search}')
                     p.input-placeholder__text Поиск
                 div.screen__chats-messages
-                    div(data-props='andrewMessage')
-                    div(data-props='clubMy')
-                    div(data-props='ilyaNews')
-                    div(data-props='vadimActive')
         div.screen__chat
             div.screen__chat-user
                 div.screen__chat-user-info

@@ -1,7 +1,7 @@
 import Router from "./shared/utils/Router";
 import {LoginPage} from "./pages/LoginPage";
 import {RegistrationPage} from "./pages/RegistrationPage";
-import { ChatPage } from "./pages/ChatPage";
+import chatWithStore from "./pages/ChatPage";
 import userSettingsWithStore from "./pages/UserSettingsPage";
 import avatarWithStore from './pages/ChangeAvatarPage';
 import passwordWithStore from './pages/ChangePasswordPage';
@@ -44,7 +44,7 @@ async function prepare() {
             pathname: '/sign-up', block: RegistrationPage, props: {user: currentUser}
         })
         .use({
-            pathname: '/messenger', block: ChatPage, props: {},
+            pathname: '/messenger', block: chatWithStore, props: {},
             exact: false, needAuth: true, isAuth: isAuth, onNonauthorized: checkAuth,
         })
         .use({

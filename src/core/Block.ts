@@ -39,7 +39,6 @@ export default class Block implements Component {
   constructor(props: ComponentProps) {
     const eventBus = new EventBus();
     this.eventEmitter = new EventEmitter();
-
     this.props = this._makePropsProxy(props);
 
     this.eventBus = () => eventBus;

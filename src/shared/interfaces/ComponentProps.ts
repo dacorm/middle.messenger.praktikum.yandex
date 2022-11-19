@@ -4,9 +4,11 @@ interface Child {
 }
 
 export interface ComponentProps {
-    [key: string]: any;
+    attributes?: Record<string, string>;
     className?: string;
-    children?: {};
+    children?: any;
     child?: Child | HTMLElement | string;
     events?: Record<string, (...args: any) => void>;
+    [key: string]: any;
+
 }

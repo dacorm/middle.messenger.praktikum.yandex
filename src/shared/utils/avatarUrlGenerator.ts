@@ -1,4 +1,4 @@
-export const avatarUrlGenerator = (url: string | undefined) => {
+export const avatarUrlGenerator = (url: string | null) => {
     if (url) {
         return `https://ya-praktikum.tech/api/v2/resources${url}`
     } else {

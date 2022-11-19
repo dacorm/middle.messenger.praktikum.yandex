@@ -33,7 +33,7 @@ export interface ChatData {
     last_message: LastMessage;
 }
 
-interface StoreType {
+export interface StoreType {
     currentUser?: UserData;
     chatList?: ChatData[];
     currentChatId?: string;
