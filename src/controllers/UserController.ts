@@ -23,6 +23,10 @@ class UserController {
     async changePassword(passwords: PasswordData) {
         return await this.api.changePassword(passwords);
     }
+
+    async findUser(login: string) {
+        return await this.api.searchUser(login);
+    }
 }
 
 export default new UserController();

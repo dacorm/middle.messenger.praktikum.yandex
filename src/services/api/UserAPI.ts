@@ -20,4 +20,8 @@ export default class UserAPI {
     changePassword(data: PasswordData): Promise<string> {
         return this.http.put('/user/password', data)
     }
+
+    searchUser(login: string): Promise<ProfileData> {
+        return this.http.post('/user/search', { login })
+    }
 }

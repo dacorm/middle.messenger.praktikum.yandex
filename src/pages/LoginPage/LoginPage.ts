@@ -75,7 +75,7 @@ export default class LoginPage extends Block {
           AuthController.signIn(data as unknown as SignInData).then(() => {
             Router.getInstance().go('/messenger');
           }).catch((e) => {
-            console.log(e);
+            alert(e.reason)
           })
         }
       });

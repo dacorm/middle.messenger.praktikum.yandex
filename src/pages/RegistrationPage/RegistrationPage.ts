@@ -159,7 +159,7 @@ export default class RegistrationPage extends Block {
               .then(() => {
                 Router.getInstance().go('/messenger');
               }).catch((e) => {
-            alert(e);
+            alert(e.reason);
           })
         }
       });

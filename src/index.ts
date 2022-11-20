@@ -10,8 +10,10 @@ import Block from "./core/Block";
 import AuthController from "./controllers/AuthController";
 import { UserData } from "./store/Store";
 import ProfilePage from "./pages/ProfilePage";
+import WS from "./services/Websocket/ws";
 
 const router = new Router('#root');
+export const ws = new WS();
 
 async function prepare() {
     let currentUser: UserData | null = null;

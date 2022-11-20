@@ -3,6 +3,7 @@ import EventBus from "../core/EventBus";
 import Block from "../core/Block";
 import {ComponentProps} from "../shared/interfaces";
 import {Indexed, isDeepEqual} from "../shared/utils/isDeepEqual";
+import {StoreMessageProps} from "../shared/interfaces/MessageProps";
 
 export enum StoreEvents {
     UPDATED = 'updated',
@@ -37,6 +38,7 @@ export interface StoreType {
     currentUser?: UserData;
     chatList?: ChatData[];
     currentChatId?: string;
+    messageList: StoreMessageProps[];
 }
 
 class Store extends EventBus {
@@ -55,6 +57,7 @@ class Store extends EventBus {
         this.set('currentUser', {});
         this.set('chatList', []);
         this.set('currentChatId', '');
+        this.set('messageList', []);
     }
 }
 export const store = new Store();
@@ -64,12 +67,12 @@ export const connect = (mapStateToProps: (state: StoreType) => Record<string, un
 
     return class extends Component {
         constructor(props: any) {
-            state = mapStateToProps(store.getState() as StoreType);
+            state = mapStateToProps(store.getState() as unknown as StoreType);
 
             super({ ...props, ...state });
 
             store.on(StoreEvents.UPDATED, () => {
-                const newState = mapStateToProps(store.getState() as StoreType);
+                const newState = mapStateToProps(store.getState() as unknown as StoreType);
 
                 if (!isDeepEqual(state, newState)) {
                     this.setProps({ ...newState } as ComponentProps);

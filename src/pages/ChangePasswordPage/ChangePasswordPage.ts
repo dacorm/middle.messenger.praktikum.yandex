@@ -4,8 +4,6 @@ import {ComponentProps} from '../../shared/interfaces';
 import './ChangePasswordPage.scss';
 import template from './ChangePasswordPage.template';
 import {SettingsInput} from '../../components/SettingsInput';
-import {renderInDom} from '../../shared/utils';
-import {MainPage} from '../MainPage';
 import {handleValidation, validateForm} from '../../shared/utils/validation';
 import {store, UserData} from "../../store/Store";
 import {avatarUrlGenerator} from "../../shared/utils/avatarUrlGenerator";
@@ -125,7 +123,7 @@ export default class ChangePasswordPage extends Block {
 
         if (link) {
             link.addEventListener('click', () => {
-                renderInDom('#root', new MainPage({}));
+                Router.getInstance().back()
             });
         }
     }

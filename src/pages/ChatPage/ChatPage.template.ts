@@ -6,6 +6,10 @@ import send from '../../assets/images/send.svg';
 import avatar from '../../assets/images/Ellipse.png';
 
 export default `div.screen
+        div.popup
+            button(data-props='deleteChat')
+            button(data-props='addUser')
+            button(data-props='deleteUser')
         div.screen__chats
             div.screen__chats-top
                 div.screen__chats-link
@@ -16,6 +20,7 @@ export default `div.screen
                     img.input-placeholder__placeholder(src='${search}')
                     p.input-placeholder__text Поиск
                 div.screen__chats-messages
+            button(data-props='add')    
         div.screen__chat
             div.screen__chat-user
                 div.screen__chat-user-info
