@@ -122,6 +122,7 @@ export default class WS {
                 this.socket.addEventListener('error', this.onError.bind(this));
                 this.chatId = (chatId as number);
                 this.userId = userId;
+
             })
             .catch((e: any) => console.log('Ошибка установки соединения', e));
     }

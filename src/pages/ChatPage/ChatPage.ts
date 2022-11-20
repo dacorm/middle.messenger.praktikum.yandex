@@ -102,7 +102,12 @@ export default class ChatPage extends Block {
             console.log(e);
         })
         AuthController.fetchUser()
-        console.log(store.getState());
+    }
+
+    checkChatsToGet() {
+        if (!this.node.querySelector('div.screen__chats-messages')!.firstChild) {
+            this.getChats();
+        }
     }
 
     getChats() {
@@ -113,8 +118,8 @@ export default class ChatPage extends Block {
         }
 
         const chats = (chatList as ChatData[]).map((item) => {
-            const preview = item.last_message !== null ? item.last_message.content : null
-            const time = item.last_message !== null ? new Date(item.last_message.time).toLocaleTimeString() : null
+            const preview = item.last_message ? item.last_message.content : null
+            const time = item.last_message ? new Date(item.last_message.time).toLocaleTimeString() : null
             return new Contact({
                 name: item.title || 'Den',
                 text: preview,
@@ -125,7 +130,7 @@ export default class ChatPage extends Block {
                     click: () => {
                         Router.getInstance().go(`/messenger/?chat_id=${item.id}`);
                         store.set('currentChatId', item.id);
-                        ws.connect()
+                        ws.connect();
                     }
                 }
             }).content
@@ -133,7 +138,6 @@ export default class ChatPage extends Block {
         const node = this.node.querySelector('div.screen__chats-messages')
         if (node) {
             this.node.querySelector('div.screen__chats-messages')!.textContent = '';
-            console.log('tut', chats);
             chats.forEach(chat => node.append(chat))
         }
     }
@@ -208,12 +212,6 @@ export default class ChatPage extends Block {
         scrollDown();
     }
 
-    checkChatsToGet() {
-        if (!this.node.querySelector('div.screen__chats-messages')!.firstChild) {
-            this.getChats();
-        }
-    }
-
     render() {
         return compile(template)();
     }
@@ -224,6 +222,8 @@ export default class ChatPage extends Block {
                 .node
                 .querySelector('a.screen__chats-profile-link') as HTMLLinkElement
         );
+
+        this.getChats();
 
         if (link) {
             link.addEventListener('click', () => {
