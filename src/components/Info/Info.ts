@@ -3,7 +3,7 @@ import Block from '../../core/Block';
 import './Info.scss';
 import template from './Info.template';
 import { InfoProps } from '../../shared/interfaces/InfoProps';
-import Router from "../../shared/utils/Router";
+import Router from '../../shared/utils/Router';
 
 export default class Info extends Block implements InfoProps {
   protected props: InfoProps;
@@ -39,7 +39,7 @@ export default class Info extends Block implements InfoProps {
     );
     if (button) {
       button.addEventListener('click', () => {
-        Router.getInstance().go('/')
+        Router.getInstance().go('/');
       });
     }
   }

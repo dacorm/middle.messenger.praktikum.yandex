@@ -1,8 +1,8 @@
 import UserSettingsPage from './UserSettingsPage';
-import {connect} from "../../store/Store";
+import { connect } from '../../store/Store';
 
 const userSettingsWithStore = connect((state) => ({
-    user: state.currentUser || '',
+  user: state.currentUser || '',
 }));
 
 export default userSettingsWithStore(UserSettingsPage);

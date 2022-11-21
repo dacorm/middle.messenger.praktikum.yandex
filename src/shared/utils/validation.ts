@@ -36,10 +36,10 @@ export const getValidationMsg = (input: HTMLInputElement) => {
     return 'Неверный формат';
   }
   if (input.id === 'first_name' && !input.validationMessage) {
-    return 'Имя должно начинаться с буквы'
+    return 'Имя должно начинаться с буквы';
   }
   if (input.id === 'second_name' && !input.validationMessage) {
-    return 'Фамилия должна начинаться с буквы'
+    return 'Фамилия должна начинаться с буквы';
   }
   return input.validationMessage;
 };

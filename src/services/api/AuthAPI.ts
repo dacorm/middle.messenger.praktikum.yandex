@@ -1,5 +1,5 @@
-import {Http} from "../../shared/utils/Http";
-import {UserData} from "../../store/Store";
+import { Http } from '../../shared/utils/Http';
+import { UserData } from '../../store/Store';
 
 export interface SignUpData {
     first_name: string | null;
@@ -16,25 +16,25 @@ export interface SignInData {
 }
 
 export default class AuthAPI {
-    protected http: Http;
+  protected http: Http;
 
-    constructor() {
-        this.http = new Http();
-    }
+  constructor() {
+    this.http = new Http();
+  }
 
-    signUp(data: SignUpData): Promise<string> {
-        return this.http.post('/auth/signup', data);
-    }
+  signUp(data: SignUpData): Promise<string> {
+    return this.http.post('/auth/signup', data);
+  }
 
-    signIn(data: SignInData): Promise<string> {
-        return this.http.post('/auth/signin', data);
-    }
+  signIn(data: SignInData): Promise<string> {
+    return this.http.post('/auth/signin', data);
+  }
 
-    logout(): Promise<string> {
-        return this.http.post('/auth/logout',{});
-    }
+  logout(): Promise<string> {
+    return this.http.post('/auth/logout', {});
+  }
 
-    read(): Promise<UserData> {
-        return this.http.get('/auth/user')
-    }
+  read(): Promise<UserData> {
+    return this.http.get('/auth/user');
+  }
 }

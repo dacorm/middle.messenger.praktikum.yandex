@@ -1,16 +1,16 @@
-import {compile} from 'pug';
+import { compile } from 'pug';
 import Block from '../../core/Block';
-import {ComponentProps} from '../../shared/interfaces';
+import { ComponentProps } from '../../shared/interfaces';
 import './UserSettingsPage.scss';
 import template from './UserSettingsPage.template';
-import {SettingsInput} from '../../components/SettingsInput';
-import {handleValidation, validateForm} from '../../shared/utils/validation';
-import Router from "../../shared/utils/Router";
-import {store, UserData} from "../../store/Store";
-import AuthController from "../../controllers/AuthController";
-import UserController from "../../controllers/UserController";
-import {ProfileData} from "../../shared/interfaces/ProfileData";
-import {avatarUrlGenerator} from "../../shared/utils/avatarUrlGenerator";
+import { SettingsInput } from '../../components/SettingsInput';
+import { handleValidation, validateForm } from '../../shared/utils/validation';
+import Router from '../../shared/utils/Router';
+import { store, UserData } from '../../store/Store';
+import AuthController from '../../controllers/AuthController';
+import UserController from '../../controllers/UserController';
+import { ProfileData } from '../../shared/interfaces/ProfileData';
+import { avatarUrlGenerator } from '../../shared/utils/avatarUrlGenerator';
 
 export default class UserSettingsPage extends Block {
   constructor(props: ComponentProps) {
@@ -159,7 +159,7 @@ export default class UserSettingsPage extends Block {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries())
+        const data = Object.fromEntries(formData.entries());
 
         const inputs = form.querySelectorAll('input');
 
@@ -171,9 +171,10 @@ export default class UserSettingsPage extends Block {
             alert('Профиль успешно изменен');
           }).then(() => {
             Router.getInstance().go('/profile');
-          }).catch((e) => {
-            alert(e);
           })
+            .catch((e) => {
+              alert(e);
+            });
         }
       });
     }

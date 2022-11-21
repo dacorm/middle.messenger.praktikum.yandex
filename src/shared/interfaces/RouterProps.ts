@@ -1,5 +1,5 @@
-import Block from "../../core/Block";
-import {RouteProps} from "./RouteProps";
+import Block from '../../core/Block';
+import { RouteProps } from './RouteProps';
 
 export interface RouterProps {
     pathname: string;

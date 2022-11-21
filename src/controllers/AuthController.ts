@@ -1,36 +1,36 @@
-import AuthAPI, {SignInData, SignUpData} from "../services/api/AuthAPI";
-import {store} from "../store/Store";
+import AuthAPI, { SignInData, SignUpData } from '../services/api/AuthAPI';
+import { store } from '../store/Store';
 
 class AuthController {
-    private api: AuthAPI;
+  private api: AuthAPI;
 
-    constructor() {
-        this.api = new AuthAPI();
-    }
+  constructor() {
+    this.api = new AuthAPI();
+  }
 
-    async signUp(data: SignUpData) {
-        await this.api.signUp(data);
-    }
+  async signUp(data: SignUpData) {
+    await this.api.signUp(data);
+  }
 
-    async signIn(data: SignInData) {
-        await this.api.signIn(data);
-    }
+  async signIn(data: SignInData) {
+    await this.api.signIn(data);
+  }
 
-    async logout() {
-        await this.api.logout();
-    }
+  async logout() {
+    await this.api.logout();
+  }
 
-    async fetchUser() {
-        const user = await this.api.read();
+  async fetchUser() {
+    const user = await this.api.read();
 
-        store.set('currentUser', user);
-    }
+    store.set('currentUser', user);
+  }
 
-    async checkUser() {
-        const user = await this.api.read();
+  async checkUser() {
+    const user = await this.api.read();
 
-        return user;
-    }
+    return user;
+  }
 }
 
 export default new AuthController();

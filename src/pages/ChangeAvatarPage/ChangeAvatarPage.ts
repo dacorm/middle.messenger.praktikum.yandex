@@ -1,10 +1,10 @@
-import {compile} from 'pug';
+import { compile } from 'pug';
 import Block from '../../core/Block';
-import {ComponentProps} from '../../shared/interfaces';
+import { ComponentProps } from '../../shared/interfaces';
 import './ChangeAvatarPage.scss';
 import template from './ChangeAvatarPage.template';
-import UserController from "../../controllers/UserController";
-import Router from "../../shared/utils/Router";
+import UserController from '../../controllers/UserController';
+import Router from '../../shared/utils/Router';
 
 export default class ChangeAvatarPage extends Block {
   constructor(props: ComponentProps) {
@@ -36,7 +36,7 @@ export default class ChangeAvatarPage extends Block {
           Router.getInstance().go('/profile');
         }).catch((e) => {
           alert(e.reason);
-        })
+        });
       });
     }
   }

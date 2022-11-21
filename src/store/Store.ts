@@ -1,9 +1,9 @@
 import { set } from '../shared/utils/set';
-import EventBus from "../core/EventBus";
-import Block from "../core/Block";
-import {ComponentProps} from "../shared/interfaces";
-import {Indexed, isDeepEqual} from "../shared/utils/isDeepEqual";
-import {StoreMessageProps} from "../shared/interfaces/MessageProps";
+import EventBus from '../core/EventBus';
+import Block from '../core/Block';
+import { ComponentProps } from '../shared/interfaces';
+import { Indexed, isDeepEqual } from '../shared/utils/isDeepEqual';
+import { StoreMessageProps } from '../shared/interfaces/MessageProps';
 
 export enum StoreEvents {
     UPDATED = 'updated',
@@ -42,42 +42,42 @@ export interface StoreType {
 }
 
 class Store extends EventBus {
-    private state: Indexed = {};
+  private state: Indexed = {};
 
-    public getState() {
-        return this.state;
-    }
+  public getState() {
+    return this.state;
+  }
 
-    public set(path: keyof StoreType, value: unknown) {
-        set(this.state, path, value);
-        this.emit(StoreEvents.UPDATED);
-    }
+  public set(path: keyof StoreType, value: unknown) {
+    set(this.state, path, value);
+    this.emit(StoreEvents.UPDATED);
+  }
 
-    public clearUserInfo() {
-        this.set('currentUser', {});
-        this.set('chatList', []);
-        this.set('currentChatId', '');
-        this.set('messageList', []);
-    }
+  public clearUserInfo() {
+    this.set('currentUser', {});
+    this.set('chatList', []);
+    this.set('currentChatId', '');
+    this.set('messageList', []);
+  }
 }
 export const store = new Store();
 
 export const connect = (mapStateToProps: (state: StoreType) => Record<string, unknown>) => (Component: typeof Block) => {
-    let state: Record<string, unknown>;
+  let state: Record<string, unknown>;
 
-    return class extends Component {
-        constructor(props: any) {
-            state = mapStateToProps(store.getState() as unknown as StoreType);
+  return class extends Component {
+    constructor(props: any) {
+      state = mapStateToProps(store.getState() as unknown as StoreType);
 
-            super({ ...props, ...state });
+      super({ ...props, ...state });
 
-            store.on(StoreEvents.UPDATED, () => {
-                const newState = mapStateToProps(store.getState() as unknown as StoreType);
+      store.on(StoreEvents.UPDATED, () => {
+        const newState = mapStateToProps(store.getState() as unknown as StoreType);
 
-                if (!isDeepEqual(state, newState)) {
-                    this.setProps({ ...newState } as ComponentProps);
-                }
-            });
+        if (!isDeepEqual(state, newState)) {
+          this.setProps({ ...newState } as ComponentProps);
         }
-    };
+      });
+    }
+  };
 };

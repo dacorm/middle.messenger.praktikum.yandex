@@ -1,13 +1,13 @@
-import {compile} from 'pug';
+import { compile } from 'pug';
 import Block from '../../core/Block';
-import {ComponentProps} from '../../shared/interfaces';
+import { ComponentProps } from '../../shared/interfaces';
 import './RegistrationPage.scss';
 import template from './RegistrationPage.template';
-import {Input} from '../../components/Input';
-import {handleValidation, validateForm} from '../../shared/utils/validation';
-import Router from "../../shared/utils/Router";
-import AuthController from "../../controllers/AuthController";
-import {SignUpData} from "../../services/api/AuthAPI";
+import { Input } from '../../components/Input';
+import { handleValidation, validateForm } from '../../shared/utils/validation';
+import Router from '../../shared/utils/Router';
+import AuthController from '../../controllers/AuthController';
+import { SignUpData } from '../../services/api/AuthAPI';
 
 export default class RegistrationPage extends Block {
   constructor(props: ComponentProps) {
@@ -156,11 +156,11 @@ export default class RegistrationPage extends Block {
         isValid = validateForm(inputs);
         if (isValid) {
           AuthController.signUp(data as unknown as SignUpData)
-              .then(() => {
-                Router.getInstance().go('/messenger');
-              }).catch((e) => {
-            alert(e.reason);
-          })
+            .then(() => {
+              Router.getInstance().go('/messenger');
+            }).catch((e) => {
+              alert(e.reason);
+            });
         }
       });
     }

@@ -1,13 +1,13 @@
-import {compile} from 'pug';
+import { compile } from 'pug';
 import Block from '../../core/Block';
-import {ComponentProps} from '../../shared/interfaces';
+import { ComponentProps } from '../../shared/interfaces';
 import './LoginPage.scss';
 import template from './LoginPage.template';
-import {handleValidation, validateForm} from '../../shared/utils/validation';
-import {Input} from '../../components/Input';
-import Router from "../../shared/utils/Router";
-import AuthController from "../../controllers/AuthController";
-import {SignInData} from "../../services/api/AuthAPI";
+import { handleValidation, validateForm } from '../../shared/utils/validation';
+import { Input } from '../../components/Input';
+import Router from '../../shared/utils/Router';
+import AuthController from '../../controllers/AuthController';
+import { SignInData } from '../../services/api/AuthAPI';
 
 export default class LoginPage extends Block {
   constructor(props: ComponentProps) {
@@ -75,8 +75,8 @@ export default class LoginPage extends Block {
           AuthController.signIn(data as unknown as SignInData).then(() => {
             Router.getInstance().go('/messenger');
           }).catch((e) => {
-            alert(e.reason)
-          })
+            alert(e.reason);
+          });
         }
       });
     }

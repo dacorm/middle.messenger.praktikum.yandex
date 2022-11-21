@@ -1,5 +1,5 @@
 import ChangeAvatarPage from './ChangeAvatarPage';
-import {connect} from "../../store/Store";
+import { connect } from '../../store/Store';
 
 const avatarWithStore = connect((state) => ({
   user: state.currentUser || '',
