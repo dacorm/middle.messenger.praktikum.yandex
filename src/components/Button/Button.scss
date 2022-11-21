@@ -18,13 +18,14 @@
 
 .button {
   border: 1px solid $color_blue;
-  padding: 10px;
-  height: 40px;
   border-radius: 8px;
+  height: 40px;
   margin-top: 10px;
+  padding: 10px;
 }
 
 .link {
+  align-self: baseline;
   color: $color_blue;
   cursor: pointer;
   font-size: 11px;
@@ -33,7 +34,6 @@
   line-height: 11px;
   margin-top: 14px;
   padding-bottom: 10px;
-  align-self: baseline;
   text-align: center;
 }
 

@@ -4,27 +4,27 @@
   display: flex;
   flex: 4;
   height: 100%;
-  width: 100%;
   position: relative;
+  width: 100%;
 
   .popup {
-    position: absolute;
-    top: 45px;
-    right: 15px;
-    width: 120px;
-    height: 120px;
     border: 1px solid $color_blue;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    padding-top: 15px;
-    z-index: 10;
+    height: 120px;
     opacity: 0;
+    padding-top: 15px;
+    position: absolute;
+    right: 15px;
+    top: 45px;
     transition: opacity .3s ease;
+    width: 120px;
+    z-index: 10;
 
     .link {
-      width: 120px;
       margin-top: 0;
+      width: 120px;
     }
 
     &_active {
