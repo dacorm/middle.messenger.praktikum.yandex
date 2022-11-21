@@ -18,7 +18,7 @@ enum EVENTS {
 }
 
 export default class Block implements Component {
-  protected props: ComponentProps;
+  props: ComponentProps;
 
   protected eventBus: () => EventBus;
 

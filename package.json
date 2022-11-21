@@ -9,7 +9,8 @@
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "lint:ts": "eslint --ext .ts ./",
-    "lint:ts:fix": "eslint --ext .ts ./ --fix"
+    "lint:ts:fix": "eslint --ext .ts ./ --fix",
+    "test": "ts-mocha src/**/*.spec.ts --require tests/mock.js"
   },
   "repository": {
     "type": "git",
@@ -23,19 +24,26 @@
   },
   "homepage": "https://github.com/dacorm/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.18.6",
+    "@babel/register": "^7.18.9",
     "@parcel/transformer-pug": "^2.7.0",
     "@parcel/transformer-sass": "^2.7.0",
+    "@types/chai": "^4.3.4",
+    "@types/mocha": "^10.0.0",
     "@types/pug": "^2.0.6",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
     "assert": "^2.0.0",
     "buffer": "^6.0.3",
+    "chai": "^4.3.7",
     "eslint": "^8.25.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.0.1",
     "eslint-plugin-react": "^7.31.10",
+    "jsdom": "^20.0.3",
     "os-browserify": "^0.3.0",
     "parcel": "^2.7.0",
     "path-browserify": "^1.0.1",
@@ -45,6 +53,7 @@
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-sass-guidelines": "^9.0.1",
     "stylelint-config-standard": "^28.0.0",
+    "ts-mocha": "^10.0.0",
     "typescript": "^4.8.4"
   },
   "dependencies": {
