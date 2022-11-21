@@ -17,7 +17,6 @@ export default class WS {
 
     private onOpenConnection() {
         this.isConnectionOK = true;
-        console.log('Соединение установлено');
 
         this.getLastMessages();
 
@@ -32,8 +31,7 @@ export default class WS {
         }
     }
 
-    private onCloseConnection(event: CloseEvent) {
-        console.log(event.wasClean ? 'Соединение закрыто чисто' : 'Обрыв соединения');
+    private onCloseConnection() {
         this.isConnectionOK = false;
 
         if (this.timerId) {
@@ -43,7 +41,6 @@ export default class WS {
     }
 
     private onReceiveMessage(event: MessageEvent) {
-        console.log('Получены данные', event.data);
         const data = JSON.parse(event.data);
 
         if (Array.isArray(data)) {
@@ -70,7 +67,6 @@ export default class WS {
     }
 
     sendMessage(message: string) {
-        console.log(this.isConnectionOK);
         if (this.isConnectionOK) {
             this.socket.send(
                 JSON.stringify({

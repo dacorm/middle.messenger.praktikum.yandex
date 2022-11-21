@@ -4,7 +4,6 @@ import {ComponentProps} from '../../shared/interfaces';
 import './ChatPage.scss';
 import template from './ChatPage.template';
 import {Message} from '../../components/Message';
-import camera from '../../assets/images/camera.png';
 import Router from "../../shared/utils/Router";
 import ChatController from "../../controllers/ChatController";
 import AuthController from "../../controllers/AuthController";
@@ -16,24 +15,10 @@ import UserController from "../../controllers/UserController";
 import {ProfileData} from "../../shared/interfaces/ProfileData";
 import {ws} from "../../index";
 import {scrollDown} from "../../shared/utils/scroll";
+import {StoreMessageProps} from "../../shared/interfaces/MessageProps";
 
 export default class ChatPage extends Block {
     constructor(props: ComponentProps) {
-
-        const hello = new Message({
-            text: `Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила 
-            Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL
-             — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали
-              только кассеты с пленкой. Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так
-               никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.`,
-            time: '11:56',
-        });
-
-        const image = new Message({
-            image: camera,
-            img: true,
-            time: '11:56',
-        });
 
         const addButton = new Button({
             child: 'Добавить чат',
@@ -74,12 +59,6 @@ export default class ChatPage extends Block {
             },
         });
 
-        const my = new Message({
-            text: 'Круто!',
-            my: true,
-            time: '12:00',
-        });
-
         super({
             ...props,
             children: {
@@ -87,9 +66,6 @@ export default class ChatPage extends Block {
                 addUser: addUser.content,
                 deleteUser: deleteUser.content,
                 add: addButton.content,
-                helloMsg: hello.content,
-                imageMsg: image.content,
-                myMsg: my.content,
             },
         });
 
@@ -102,6 +78,7 @@ export default class ChatPage extends Block {
             console.log(e);
         })
         AuthController.fetchUser()
+        console.log(store.getState());
     }
 
     checkChatsToGet() {
@@ -131,14 +108,39 @@ export default class ChatPage extends Block {
                         Router.getInstance().go(`/messenger/?chat_id=${item.id}`);
                         store.set('currentChatId', item.id);
                         ws.connect();
+                        this.getMessages();
                     }
                 }
             }).content
         })
         const node = this.node.querySelector('div.screen__chats-messages')
         if (node) {
-            this.node.querySelector('div.screen__chats-messages')!.textContent = '';
+            node.textContent = '';
             chats.forEach(chat => node.append(chat))
+        }
+    }
+
+    getMessages() {
+        const { messageList } = store.getState();
+
+        if (!messageList) {
+            return this.node.querySelector('div.messages-container')!.textContent = 'Выберите чат для общения';
+        }
+
+        const messages = (messageList as StoreMessageProps[]).map((item) => {
+            const time = item.messageTime ? new Date(item.messageTime).toLocaleTimeString() : ''
+
+            return new Message({
+                text: item.messageText,
+                my: item.isMyMessage,
+                time: time,
+            }).content;
+        })
+
+        const node = this.node.querySelector('div.messages-container');
+        if (node) {
+            node.textContent = '';
+            messages.forEach(message => node.append(message))
         }
     }
 
@@ -189,6 +191,19 @@ export default class ChatPage extends Block {
         }
     }
 
+    getChatTitle() {
+        const { chatList, currentChatId } = store.getState();
+        const node = this.node.querySelector('p.screen__chat-user-username')
+
+        if (chatList && currentChatId && node) {
+            (chatList as ChatData[]).forEach((chat) => {
+                if (chat.id === currentChatId) {
+                    node.textContent = chat.title;
+                }
+            })
+        }
+    }
+
     removeUserFromChat() {
         const user = prompt('Введите логин пользователя');
         const { currentChatId } = store.getState();
@@ -208,7 +223,6 @@ export default class ChatPage extends Block {
 
     sendMessage(message: string) {
         ws.sendMessage(message);
-        console.log('сообщенгие должно отправиться')
         scrollDown();
     }
 
@@ -224,6 +238,8 @@ export default class ChatPage extends Block {
         );
 
         this.getChats();
+        this.getChatTitle();
+        this.getMessages();
 
         if (link) {
             link.addEventListener('click', () => {
