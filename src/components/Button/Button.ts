@@ -4,14 +4,15 @@ import './Button.scss';
 import { ButtonProps } from '../../shared/interfaces/ButtonProps';
 import { classNames } from '../../shared/utils/classNames';
 
-let template = 'button #{child}';
+let template = 'button.button #{child}';
 
 export default class Button extends Block implements ButtonProps {
-  protected props: ButtonProps;
+  props: ButtonProps;
 
   get className(): string {
-    return classNames('button', {
+    return classNames('', {
       link: this.props.secondary,
+      red: this.props.red,
     }, []);
   }
 

@@ -16,6 +16,14 @@
   width: 280px;
 }
 
+.button {
+  border: 1px solid $color_blue;
+  padding: 10px;
+  height: 40px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
 .link {
   color: $color_blue;
   cursor: pointer;
@@ -24,7 +32,11 @@
   font-weight: 500;
   line-height: 11px;
   margin-top: 14px;
-  padding-bottom: 30px;
-
+  padding-bottom: 10px;
+  align-self: baseline;
   text-align: center;
+}
+
+.red {
+  color: $color_red;
 }

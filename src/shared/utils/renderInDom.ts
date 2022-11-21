@@ -6,7 +6,7 @@ function removeAllChildrens(parent: Element) {
   }
 }
 
-export function renderInDom(query: string, block: Block) {
+export function renderInDom(query: string | undefined, block: Block) {
   const root = document.querySelector(query);
   if (root) {
     removeAllChildrens(root);

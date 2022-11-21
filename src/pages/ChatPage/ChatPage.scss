@@ -5,6 +5,32 @@
   flex: 4;
   height: 100%;
   width: 100%;
+  position: relative;
+
+  .popup {
+    position: absolute;
+    top: 45px;
+    right: 15px;
+    width: 120px;
+    height: 120px;
+    border: 1px solid $color_blue;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity .3s ease;
+
+    .link {
+      width: 120px;
+      margin-top: 0;
+    }
+
+    &_active {
+      opacity: 1;
+    }
+  }
 
   &__chat {
     display: flex;
@@ -12,6 +38,17 @@
     flex-direction: column;
     justify-content: space-between;
     min-height: 100%;
+    position: relative;
+
+    .messages-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    &-popup {
+      position: absolute;
+    }
 
     &-date {
       color: #999;
@@ -159,6 +196,7 @@
 
     &-button {
       background: transparent;
+      cursor: pointer;
     }
   }
 

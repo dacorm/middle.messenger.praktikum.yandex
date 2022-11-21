@@ -4,9 +4,10 @@ import { ComponentProps } from '../../shared/interfaces';
 import './RegistrationPage.scss';
 import template from './RegistrationPage.template';
 import { Input } from '../../components/Input';
-import { renderInDom } from '../../shared/utils';
-import { LoginPage } from '../LoginPage';
 import { handleValidation, validateForm } from '../../shared/utils/validation';
+import Router from '../../shared/utils/Router';
+import AuthController from '../../controllers/AuthController';
+import { SignUpData } from '../../services/api/AuthAPI';
 
 export default class RegistrationPage extends Block {
   constructor(props: ComponentProps) {
@@ -149,11 +150,18 @@ export default class RegistrationPage extends Block {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(form);
-        console.log(Object.fromEntries(formData.entries()));
+        const data = Object.fromEntries(formData.entries());
         const inputs = form.querySelectorAll('input');
 
         isValid = validateForm(inputs);
-        console.log(isValid ? 'Форма валидна' : 'Форма не валидна');
+        if (isValid) {
+          AuthController.signUp(data as unknown as SignUpData)
+            .then(() => {
+              Router.getInstance().go('/messenger');
+            }).catch((e) => {
+              alert(e.reason);
+            });
+        }
       });
     }
 
@@ -165,7 +173,7 @@ export default class RegistrationPage extends Block {
 
     if (link) {
       link.addEventListener('click', () => {
-        renderInDom('#root', new LoginPage({}));
+        Router.getInstance().go('/');
       });
     }
   }

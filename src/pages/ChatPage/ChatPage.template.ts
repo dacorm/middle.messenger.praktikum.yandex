@@ -3,9 +3,12 @@ import search from '../../assets/images/search.svg';
 import additional from '../../assets/images/additional.svg';
 import add from '../../assets/images/add.svg';
 import send from '../../assets/images/send.svg';
-import avatar from '../../assets/images/Ellipse.png';
 
 export default `div.screen
+        div.popup
+            button(data-props='deleteChat')
+            button(data-props='addUser')
+            button(data-props='deleteUser')
         div.screen__chats
             div.screen__chats-top
                 div.screen__chats-link
@@ -16,21 +19,16 @@ export default `div.screen
                     img.input-placeholder__placeholder(src='${search}')
                     p.input-placeholder__text Поиск
                 div.screen__chats-messages
-                    div(data-props='andrewMessage')
-                    div(data-props='clubMy')
-                    div(data-props='ilyaNews')
-                    div(data-props='vadimActive')
+            button(data-props='add')    
         div.screen__chat
             div.screen__chat-user
                 div.screen__chat-user-info
-                    img.message__avatar(src='${avatar}', alt='Аватарка пользователя')
-                    p.screen__chat-user-username Вадим
+                    img.message__avatar(src='https://avatars.mds.yandex.net/i?id=2d9d96cf73506a0498ed3ae4f5d2da5f-4779391-images-thumbs&ref=rim&n=33&w=150&h=150', alt='Аватарка чата')
+                    p.screen__chat-user-username Чат не выбран
                 button.screen__chat-button
                     img.screen__chat-button-image(src='${additional}' alt='Дополнительно')
-            p.screen__chat-date 19 июня
-            div(data-props='helloMsg')
-            div(data-props='imageMsg')
-            div(data-props='myMsg')
+            p.screen__chat-date Чат
+            div.messages-container
             div.screen__chat-input
                 img.screen__chat-input-add(src='${add}' alt='Прикрепить')
                 input.screen__chat-input-input(type='text' placeholder='Сообщение' id='message' name='message' required)

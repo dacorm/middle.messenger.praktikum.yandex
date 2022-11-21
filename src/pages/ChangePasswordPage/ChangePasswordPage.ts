@@ -4,9 +4,13 @@ import { ComponentProps } from '../../shared/interfaces';
 import './ChangePasswordPage.scss';
 import template from './ChangePasswordPage.template';
 import { SettingsInput } from '../../components/SettingsInput';
-import { renderInDom } from '../../shared/utils';
-import { MainPage } from '../MainPage';
 import { handleValidation, validateForm } from '../../shared/utils/validation';
+import { store, UserData } from '../../store/Store';
+import { avatarUrlGenerator } from '../../shared/utils/avatarUrlGenerator';
+import AuthController from '../../controllers/AuthController';
+import UserController from '../../controllers/UserController';
+import Router from '../../shared/utils/Router';
+import { PasswordData } from '../../shared/interfaces/PasswordData';
 
 export default class ChangePasswordPage extends Block {
   constructor(props: ComponentProps) {
@@ -66,6 +70,19 @@ export default class ChangePasswordPage extends Block {
     });
   }
 
+  _updateUserInfo() {
+    const { currentUser } = store.getState();
+        (this.node.querySelector('img.profile__avatar') as HTMLImageElement)!.src = avatarUrlGenerator((currentUser as UserData).avatar);
+  }
+
+  componentDidMount() {
+    AuthController.fetchUser().then(() => {
+      this._updateUserInfo();
+    }).catch((e) => {
+      alert(e);
+    });
+  }
+
   render() {
     return compile(template)();
   }
@@ -83,11 +100,18 @@ export default class ChangePasswordPage extends Block {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(form);
-        console.log(Object.fromEntries(formData.entries()));
+        const passwords = Object.fromEntries(formData.entries());
         const inputs = form.querySelectorAll('input');
 
         isValid = validateForm(inputs);
-        console.log(isValid ? 'Форма валидна' : 'Форма не валидна');
+
+        if (isValid) {
+          UserController.changePassword(passwords as unknown as PasswordData).then(() => {
+            Router.getInstance().go('/profile');
+          }).catch((e) => {
+            alert(e.reason);
+          });
+        }
       });
     }
 
@@ -99,7 +123,7 @@ export default class ChangePasswordPage extends Block {
 
     if (link) {
       link.addEventListener('click', () => {
-        renderInDom('#root', new MainPage({}));
+        Router.getInstance().back();
       });
     }
   }
