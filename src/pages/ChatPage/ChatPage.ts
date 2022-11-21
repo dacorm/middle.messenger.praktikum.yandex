@@ -99,7 +99,7 @@ export default class ChatPage extends Block {
             const time = item.last_message ? new Date(item.last_message.time).toLocaleTimeString() : null
             return new Contact({
                 name: item.title || 'Den',
-                text: preview,
+                messagePreview: preview,
                 time: time,
                 count: item.unread_count ?? 0,
                 src: avatarUrlGenerator(item.avatar),
