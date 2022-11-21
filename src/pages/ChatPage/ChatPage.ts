@@ -78,7 +78,6 @@ export default class ChatPage extends Block {
             console.log(e);
         })
         AuthController.fetchUser()
-        console.log(store.getState());
     }
 
     checkChatsToGet() {
@@ -128,7 +127,7 @@ export default class ChatPage extends Block {
         }
 
         const messages = (messageList as StoreMessageProps[]).map((item) => {
-            const time = item.messageTime ? new Date(item.messageTime).toLocaleTimeString() : ''
+            const time = item.messageDate ? new Date(item.messageDate).toLocaleTimeString().split('').slice(0, 5).join('') : ''
 
             return new Message({
                 text: item.messageText,
@@ -260,7 +259,6 @@ export default class ChatPage extends Block {
                 sendButton.addEventListener('click', () => {
                     this.sendMessage(input.value);
                     input.value = '';
-                    console.log(store.getState());
                 })
             }
         }

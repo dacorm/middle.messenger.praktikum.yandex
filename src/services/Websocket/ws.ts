@@ -48,6 +48,7 @@ export default class WS {
                 .map((item) => ({
                     isMyMessage: this.userId === item.user_id,
                     messageText: item.content,
+                    messageDate: item.time,
                 }))
                 .reverse();
             store.set('messageList', oldMessages);
@@ -57,6 +58,7 @@ export default class WS {
             messages.push({
                 isMyMessage: this.userId === data.user_id,
                 messageText: data.content,
+                messageDate: data.time,
             });
             store.set('messageList', messages);
         }
