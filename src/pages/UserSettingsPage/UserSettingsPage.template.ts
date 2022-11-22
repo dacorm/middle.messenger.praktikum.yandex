@@ -1,6 +1,8 @@
 export default `
 div.settings
-        div.settings__avatar
+        div.profile__avatar-container
+            img.profile__avatar(src='')
+            div.profile__avatar-overlay Изменить
         form.settings__form(id='userSettings')
             input(data-props='email')
             input(data-props='login')

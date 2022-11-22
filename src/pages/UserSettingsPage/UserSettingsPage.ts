@@ -4,9 +4,13 @@ import { ComponentProps } from '../../shared/interfaces';
 import './UserSettingsPage.scss';
 import template from './UserSettingsPage.template';
 import { SettingsInput } from '../../components/SettingsInput';
-import { renderInDom } from '../../shared/utils';
-import { MainPage } from '../MainPage';
 import { handleValidation, validateForm } from '../../shared/utils/validation';
+import Router from '../../shared/utils/Router';
+import { store, UserData } from '../../store/Store';
+import AuthController from '../../controllers/AuthController';
+import UserController from '../../controllers/UserController';
+import { ProfileData } from '../../shared/interfaces/ProfileData';
+import { avatarUrlGenerator } from '../../shared/utils/avatarUrlGenerator';
 
 export default class UserSettingsPage extends Block {
   constructor(props: ComponentProps) {
@@ -119,6 +123,25 @@ export default class UserSettingsPage extends Block {
     });
   }
 
+  _updateUserInfo() {
+    const { currentUser } = store.getState();
+    (this.node.querySelector('[name="email"]') as HTMLInputElement)!.value = (currentUser as UserData).email as string || '';
+    (this.node.querySelector('[name="login"]') as HTMLInputElement)!.value = (currentUser as UserData).login as string || '';
+    (this.node.querySelector('[name="first_name"]') as HTMLInputElement)!.value = (currentUser as UserData).first_name as string || '';
+    (this.node.querySelector('[name="second_name"]') as HTMLInputElement)!.value = (currentUser as UserData).second_name as string || '';
+    (this.node.querySelector('[name="display_name"]') as HTMLInputElement)!.value = (currentUser as UserData).display_name as string || '';
+    (this.node.querySelector('[name="phone"]') as HTMLInputElement)!.value = (currentUser as UserData).phone as string || '';
+    (this.node.querySelector('img.profile__avatar') as HTMLImageElement)!.src = avatarUrlGenerator((currentUser as UserData).avatar);
+  }
+
+  componentDidMount() {
+    AuthController.fetchUser().then(() => {
+      this._updateUserInfo();
+    }).catch((e) => {
+      alert(e.reason);
+    });
+  }
+
   render() {
     return compile(template)();
   }
@@ -136,12 +159,23 @@ export default class UserSettingsPage extends Block {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(form);
-        console.log(Object.fromEntries(formData.entries()));
+        const data = Object.fromEntries(formData.entries());
 
         const inputs = form.querySelectorAll('input');
 
         isValid = validateForm(inputs);
-        console.log(isValid ? 'Форма валидна' : 'Форма не валидна');
+        if (isValid) {
+          UserController.updateProfile(data as unknown as ProfileData).then(() => {
+            this._updateUserInfo();
+          }).then(() => {
+            alert('Профиль успешно изменен');
+          }).then(() => {
+            Router.getInstance().go('/profile');
+          })
+            .catch((e) => {
+              alert(e);
+            });
+        }
       });
     }
 
@@ -153,7 +187,7 @@ export default class UserSettingsPage extends Block {
 
     if (link) {
       link.addEventListener('click', () => {
-        renderInDom('#root', new MainPage({}));
+        Router.getInstance().back();
       });
     }
   }

@@ -17,8 +17,8 @@ enum EVENTS {
   FLOW_RENDER = 'flow:render',
 }
 
-export default abstract class Block implements Component {
-  protected props: ComponentProps;
+export default class Block implements Component {
+  props: ComponentProps;
 
   protected eventBus: () => EventBus;
 
@@ -39,7 +39,6 @@ export default abstract class Block implements Component {
   constructor(props: ComponentProps) {
     const eventBus = new EventBus();
     this.eventEmitter = new EventEmitter();
-
     this.props = this._makePropsProxy(props);
 
     this.eventBus = () => eventBus;
@@ -86,98 +85,102 @@ export default abstract class Block implements Component {
     return this.node;
   }
 
+  leave() {
+    this.eventBus().emit(EVENTS.FLOW_CDU);
+  }
+
   componentDidMount() {}
 
-    abstract render(): string;
+  render() {}
 
-    _componentDidUpdate() {
-      const response = this.componentDidUpdate();
-      if (!response) {
-        return;
-      }
-      if (response) {
-        this.eventBus().emit(EVENTS.FLOW_RENDER);
+  _componentDidUpdate() {
+    const response = this.componentDidUpdate();
+    if (!response) {
+      return;
+    }
+    if (response) {
+      this.eventBus().emit(EVENTS.FLOW_RENDER);
+    }
+  }
+
+  componentDidUpdate() {
+    return true;
+  }
+
+  setProps = (nextProps: ComponentProps) => {
+    if (!nextProps) {
+      return;
+    }
+
+    Object.assign(this.props, nextProps);
+    this.eventBus().emit(EVENTS.FLOW_CDU);
+  };
+
+  private _render(): void {
+    let renderedElement = null;
+    if (this.node) {
+      const nodeId = this.node.getAttribute('id');
+
+      if (nodeId) {
+        renderedElement = document.getElementById(nodeId);
       }
     }
 
-    componentDidUpdate() {
-      return true;
+    const html: string = (this.render() as unknown as string);
+    const divElement = document.createElement('div');
+    divElement.innerHTML = html.trim();
+    divElement.querySelectorAll('[data-props]').forEach((el) => {
+      const name = el.getAttribute('data-props');
+      if (this.props.children && name) {
+        // @ts-ignore
+        el.replaceWith(this.props.children[name]);
+      }
+    });
+    this.node = <HTMLElement>divElement.firstChild;
+    const id = v4();
+    this.node.setAttribute('id', id);
+
+    this.eventEmitter.clear();
+    this.eventEmitter.node = this.node;
+    this.bindProps();
+    this.customiseComponent();
+
+    if (this.className) {
+      this.node.setAttribute('class', this.className);
     }
 
-    setProps = (nextProps: ComponentProps) => {
-      if (!nextProps) {
-        return;
-      }
-
-      Object.assign(this.props, nextProps);
-      this.eventBus().emit(EVENTS.FLOW_CDU);
-    };
-
-    private _render(): void {
-      let renderedElement = null;
-      if (this.node) {
-        const nodeId = this.node.getAttribute('id');
-
-        if (nodeId) {
-          renderedElement = document.getElementById(nodeId);
-        }
-      }
-
-      const html = this.render();
-      const divElement = document.createElement('div');
-      divElement.innerHTML = html.trim();
-      divElement.querySelectorAll('[data-props]').forEach((el) => {
-        const name = el.getAttribute('data-props');
-        if (this.props.children && name) {
-          // @ts-ignore
-          el.replaceWith(this.props.children[name]);
-        }
-      });
-      this.node = <HTMLElement>divElement.firstChild;
-      const id = v4();
-      this.node.setAttribute('id', id);
-
-      this.eventEmitter.clear();
-      this.eventEmitter.node = this.node;
-      this.bindProps();
-      this.customiseComponent();
-
-      if (this.className) {
-        this.node.setAttribute('class', this.className);
-      }
-
-      if (renderedElement) {
-        renderedElement.replaceWith(this.node);
-      }
-
-      if (this.props?.events) {
-        Object.entries(this.props.events).forEach(
-          ([eventName, callback]) => {
-            this.eventEmitter.add(eventName, callback);
-          },
-        );
-      }
+    if (renderedElement) {
+      renderedElement.replaceWith(this.node);
     }
 
-    protected customiseComponent() {
-
-    }
-
-    _makePropsProxy(props: ComponentProps) {
-      // Можно и так передать this
-      // Такой способ больше не применяется с приходом ES6+
-      const self = this;
-
-      return new Proxy(props, {
-        set(target, prop, value) {
-          // @ts-ignore
-          target[prop] = value;
-          self.eventBus().emit(EVENTS.FLOW_CDU);
-          return true;
+    if (this.props?.events) {
+      Object.entries(this.props.events).forEach(
+        ([eventName, callback]) => {
+          this.eventEmitter.add(eventName, callback);
         },
-        deleteProperty() {
-          throw new Error('Отказано в доступе');
-        },
-      });
+      );
     }
+  }
+
+  protected customiseComponent() {
+
+  }
+
+  _makePropsProxy(props: ComponentProps) {
+    // Можно и так передать this
+    // Такой способ больше не применяется с приходом ES6+
+    const self = this;
+
+    return new Proxy(props, {
+      set(target, prop, value) {
+        // @ts-ignore
+        target[prop] = value;
+        self.eventBus().emit(EVENTS.FLOW_CDU);
+        return true;
+      },
+      deleteProperty() {
+        throw new Error('Отказано в доступе');
+      },
+    });
+  }
 }

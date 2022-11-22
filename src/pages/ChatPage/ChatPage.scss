@@ -4,7 +4,33 @@
   display: flex;
   flex: 4;
   height: 100%;
+  position: relative;
   width: 100%;
+
+  .popup {
+    border: 1px solid $color_blue;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    height: 120px;
+    opacity: 0;
+    padding-top: 15px;
+    position: absolute;
+    right: 15px;
+    top: 45px;
+    transition: opacity .3s ease;
+    width: 120px;
+    z-index: 10;
+
+    .link {
+      margin-top: 0;
+      width: 120px;
+    }
+
+    &_active {
+      opacity: 1;
+    }
+  }
 
   &__chat {
     display: flex;
@@ -12,6 +38,17 @@
     flex-direction: column;
     justify-content: space-between;
     min-height: 100%;
+    position: relative;
+
+    .messages-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    &-popup {
+      position: absolute;
+    }
 
     &-date {
       color: #999;
@@ -159,6 +196,7 @@
 
     &-button {
       background: transparent;
+      cursor: pointer;
     }
   }
 

@@ -1,6 +1,8 @@
 export default `
 div.change
-        div.change__avatar
+        div.profile__avatar-container
+            img.profile__avatar(src='')
+            div.profile__avatar-overlay Изменить
         form.change__form(id='changePassword')
             input(data-props='oldPassword')
             input(data-props='newPassword')

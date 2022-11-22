@@ -10,7 +10,7 @@ export const checkPassword = (value: string) => /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*
 
 export const checkPhone = (value: string) => /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d+)\)?)[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/.test(value);
 
-export const checkName = (value: string) => /^[а-яА-я][а-яА-Я0-9-_\.]{1,20}$/.test(value);
+export const checkName = (value: string) => /^[A-ZА-Я]{1}[a-zа-я\-]{1,20}$/.test(value);
 
 export const isValid = (input: HTMLInputElement) => {
   if (input.id === 'email') {
@@ -36,10 +36,10 @@ export const getValidationMsg = (input: HTMLInputElement) => {
     return 'Неверный формат';
   }
   if (input.id === 'first_name' && !input.validationMessage) {
-    return 'Имя должно начинаться с буквы'
+    return 'Имя должно начинаться с буквы';
   }
   if (input.id === 'second_name' && !input.validationMessage) {
-    return 'Фамилия должна начинаться с буквы'
+    return 'Фамилия должна начинаться с буквы';
   }
   return input.validationMessage;
 };

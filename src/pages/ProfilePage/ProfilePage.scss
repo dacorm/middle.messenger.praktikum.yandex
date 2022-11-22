@@ -1,0 +1,147 @@
+@import "../../styles/variables";
+
+.profile {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 60px auto 150px;
+  width: 510px;
+
+  &__container {
+    width: 100%;
+  }
+
+  &__button {
+    background: $color_blue;
+    border-radius: 8px;
+
+    color: #FFF;
+    cursor: pointer;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    height: 37px;
+    line-height: 13px;
+    margin-top: 60px;
+    padding: 12px 0;
+    text-align: center;
+    transition: .3s;
+    width: 280px;
+
+    &:hover {
+      opacity: .6;
+    }
+  }
+
+  &__push-back {
+    align-items: center;
+    background: #FBFBFB;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 65px;
+
+    &-button {
+      background-color: transparent;
+      background-image: url("../../assets/images/push_back.svg");
+      cursor: pointer;
+      height: 28px;
+      transition: .3s;
+      width: 28px;
+
+      &:hover {
+        opacity: .6;
+      }
+    }
+  }
+
+
+
+  &__avatar-container {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    height: 200px;
+    justify-content: center;
+    margin-bottom: 97px;
+    position: relative;
+    width: 200px;
+
+    .profile__avatar {
+      border-radius: 50%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      width: 100%;
+    }
+
+    .profile__avatar-overlay {
+      align-items: center;
+      background: rgba(0, 0, 0, .5);
+      border-radius: 50%;
+      color: black;
+      cursor: pointer;
+      display: flex;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 500;
+      height: 100%;
+      justify-content: center;
+      left: 0;
+      line-height: 13px;
+      opacity: 0;
+      position: absolute;
+      text-align: center;
+      top: 0;
+      transition: .3s ease;
+      width: 100%;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .property__container {
+    border-bottom: 1px solid #EAEAEA;
+    display: flex;
+    height: 30px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+
+    &:last-of-type {
+      border-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .property__text {
+        color: #999;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 13px;
+        text-align: right;
+    }
+
+    .propert__label {
+
+      color: #1E1E1E;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 500;
+      height: fit-content;
+      line-height: 13px;
+      width: fit-content;
+    }
+  }
+
+  &__form {
+    width: 100%;
+  }
+}
