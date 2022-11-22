@@ -10,7 +10,7 @@ export const checkPassword = (value: string) => /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*
 
 export const checkPhone = (value: string) => /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d+)\)?)[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/.test(value);
 
-export const checkName = (value: string) => /^[а-яА-я][а-яА-Я0-9-_\.]{1,20}$/.test(value);
+export const checkName = (value: string) => /^[A-ZА-Я]{1}[a-zа-я\-]{1,20}$/.test(value);
 
 export const isValid = (input: HTMLInputElement) => {
   if (input.id === 'email') {
