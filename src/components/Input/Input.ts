@@ -5,7 +5,7 @@ import { InputProps } from '../../shared/interfaces';
 import template from './Input.template';
 
 export default class Input extends Block implements InputProps {
-  protected props: InputProps;
+  props: InputProps;
 
   protected get proplist() {
     return [

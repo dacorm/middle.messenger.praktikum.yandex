@@ -1,5 +1,5 @@
-import { renderInDom } from './renderInDom';
+import {renderInDom} from "./renderInDom";
 
 export {
-  renderInDom,
-};
+  renderInDom
+}

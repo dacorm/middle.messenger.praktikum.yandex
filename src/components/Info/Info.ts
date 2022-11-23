@@ -6,7 +6,7 @@ import { InfoProps } from '../../shared/interfaces/InfoProps';
 import Router from '../../shared/utils/Router';
 
 export default class Info extends Block implements InfoProps {
-  protected props: InfoProps;
+  props: InfoProps;
 
   protected get proplist() {
     return [
