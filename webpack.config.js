@@ -52,8 +52,12 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(png|jpg|gif|woff(2)?|eot|ttf|otf)$/,
-                type: 'asset/resource',
+                test: /\.(png|jpe?g|gif|svg|woff2|woff)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                    },
+                ],
             },
             {
                 test: /\.s[ac]ss$/i,
@@ -78,10 +82,6 @@ module.exports = {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
                 exclude: /node_modules/,
-            },
-            {
-                test: /\.svg$/,
-                use: ['url-loader'],
             },
         ],
     },
