@@ -1,4 +1,4 @@
-import { compile } from 'pug';
+import compile from '../../pug-runtime/pug';
 import Block from '../../core/Block';
 import './Button.scss';
 import { ButtonProps } from '../../shared/interfaces/ButtonProps';

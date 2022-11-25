@@ -1,4 +1,4 @@
-import { compile } from 'pug';
+import compile from '../../pug-runtime/pug';
 import Block from '../../core/Block';
 import './SettingsInput.scss';
 import template from './SettingsInput.template';

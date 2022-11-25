@@ -35,12 +35,20 @@ module.exports = {
             minify: {
                 removeComments: isProd,
                 collapseWhitespace: isProd
-            }
+            },
+            inject: 'body'
         }),
         new CopyPlugin({
             patterns: [
                 {
                     from: path.resolve(__dirname, 'src/favicon.ico'),
+                    to: path.resolve(__dirname, 'dist')
+                },
+                {
+                    from: path.resolve(__dirname, 'src/pug-runtime/pug-browser.js'),
+                    to: path.resolve(__dirname, 'dist')
+                },{
+                    from: path.resolve(__dirname, 'src/pug-runtime/pug-init.js'),
                     to: path.resolve(__dirname, 'dist')
                 },
             ],
@@ -68,20 +76,20 @@ module.exports = {
                     "sass-loader",
                 ],
             },
-            {
-                test: /\.m?js$/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env']
-                    }
-                }
-            },
+            // {
+            //     test: /\.m?js$/,
+            //     exclude: /(node_modules|bower_components|pug-runtime)/,
+            //     use: {
+            //         loader: 'babel-loader',
+            //         options: {
+            //             presets: ['@babel/preset-env']
+            //         }
+            //     }
+            // },
             {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
-                exclude: /node_modules/,
+                exclude: /(node_modules|pug-runtime)/,
             },
         ],
     },

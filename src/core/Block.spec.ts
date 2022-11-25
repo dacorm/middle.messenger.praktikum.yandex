@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { compile } from 'pug';
+import compile from '../pug-runtime/pug';
 import Block from './block';
 
 class DummyComponent extends Block {
