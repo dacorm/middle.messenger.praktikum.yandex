@@ -1,4 +1,4 @@
-import compile from '../../pug-runtime/pug';
+import compile from '../../pug';
 import Block from '../../core/Block';
 import template from './Message.template';
 import './Message.scss';

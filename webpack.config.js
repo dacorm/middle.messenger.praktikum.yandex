@@ -9,9 +9,8 @@ const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
 
 module.exports = {
-    context: path.resolve(__dirname, 'src'),
     mode: "development",
-    entry: './index.ts',
+    entry: './src/index.ts',
     output: {
         filename: isProd ? "bundle.[hash].js" : "bundle.js",
         path: path.resolve(__dirname, 'dist')
@@ -31,7 +30,7 @@ module.exports = {
         new NodePolyfillPlugin(),
         new CleanWebpackPlugin(),
         new HTMLWebpackPlugin({
-            template: "index.html",
+            template: "./src/index.html",
             minify: {
                 removeComments: isProd,
                 collapseWhitespace: isProd
@@ -45,10 +44,10 @@ module.exports = {
                     to: path.resolve(__dirname, 'dist')
                 },
                 {
-                    from: path.resolve(__dirname, 'src/pug-runtime/pug-browser.js'),
+                    from: path.resolve(__dirname, 'pug-runtime/pug.js'),
                     to: path.resolve(__dirname, 'dist')
                 },{
-                    from: path.resolve(__dirname, 'src/pug-runtime/pug-init.js'),
+                    from: path.resolve(__dirname, 'pug-runtime/pug-init.js'),
                     to: path.resolve(__dirname, 'dist')
                 },
             ],
@@ -93,4 +92,5 @@ module.exports = {
             },
         ],
     },
+
 }
