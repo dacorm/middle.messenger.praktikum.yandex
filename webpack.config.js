@@ -4,6 +4,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
@@ -25,6 +26,13 @@ module.exports = {
     devServer: {
         port: 3000,
         hot: isDev,
+    },
+    optimization: {
+        minimizer: [
+            new TerserPlugin({
+                exclude: [ /pug-init\.js$/, /pug\.js$/ ],
+            }),
+        ],
     },
     plugins: [
         new NodePolyfillPlugin(),
@@ -75,16 +83,6 @@ module.exports = {
                     "sass-loader",
                 ],
             },
-            // {
-            //     test: /\.m?js$/,
-            //     exclude: /(node_modules|bower_components|pug-runtime)/,
-            //     use: {
-            //         loader: 'babel-loader',
-            //         options: {
-            //             presets: ['@babel/preset-env']
-            //         }
-            //     }
-            // },
             {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
