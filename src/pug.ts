@@ -1,1 +1,1 @@
-export default window.pug.compile
+export default window.pug.compile;
