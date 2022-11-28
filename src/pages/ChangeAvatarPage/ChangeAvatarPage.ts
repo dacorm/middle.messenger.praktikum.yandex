@@ -1,4 +1,4 @@
-import { compile } from 'pug';
+import compile from '../../pug';
 import Block from '../../core/Block';
 import { ComponentProps } from '../../shared/interfaces';
 import './ChangeAvatarPage.scss';

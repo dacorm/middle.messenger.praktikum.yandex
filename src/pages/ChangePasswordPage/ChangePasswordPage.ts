@@ -1,4 +1,4 @@
-import { compile } from 'pug';
+import compile from '../../pug';
 import Block from '../../core/Block';
 import { ComponentProps } from '../../shared/interfaces';
 import './ChangePasswordPage.scss';
@@ -118,7 +118,7 @@ export default class ChangePasswordPage extends Block {
     const link = (
             this
               .node
-              .querySelector('a.settings__push-back-button') as HTMLLinkElement
+              .querySelector('a.change__push-back-button') as HTMLLinkElement
     );
 
     if (link) {

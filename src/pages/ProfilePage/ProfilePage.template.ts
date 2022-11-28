@@ -26,4 +26,4 @@ div.profile
         button(data-props='password')
         button(data-props='logout')
         div.settings__push-back
-            a.settings__push-back-button`;
+            a.settings__push-back-button <`;

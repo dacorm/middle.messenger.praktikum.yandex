@@ -11,6 +11,7 @@ import AuthController from './controllers/AuthController';
 import { UserData } from './store/Store';
 import ProfilePage from './pages/ProfilePage';
 import WS from './services/Websocket/ws';
+import './main.scss';
 
 const router = new Router('#root');
 export const ws = new WS();
