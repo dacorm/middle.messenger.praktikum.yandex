@@ -8,6 +8,7 @@ export const checkEmail = (value: string) => /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@
 
 export const checkPassword = (value: string) => /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d).*$/.test(value);
 
+// eslint-disable-next-line
 export const checkPhone = (value: string) => /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d+)\)?)[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/.test(value);
 
 export const checkName = (value: string) => /^[A-ZА-Я]{1}[a-zа-я\-]{1,20}$/.test(value);
