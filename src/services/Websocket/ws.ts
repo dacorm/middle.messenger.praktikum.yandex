@@ -111,7 +111,7 @@ export default class WS {
 
     const http = new Http();
     http
-      .post<{ token: string }>(`/chats/token/${chatId}`, { mode: 'cors', credentials: 'include' })
+      .post<{ token: string }>(`https://ya-praktikum.tech/api/v2/chats/token/${chatId}`, { mode: 'cors', credentials: 'include' })
       .then((data) => {
         if (this.chatId !== undefined) {
           this.socket.removeEventListener('open', onOpenConnection);

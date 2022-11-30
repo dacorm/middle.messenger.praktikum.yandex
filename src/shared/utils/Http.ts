@@ -13,8 +13,6 @@ export type RequestOptions = {
     data?: any;
 };
 
-const baseUrl = 'https://ya-praktikum.tech/api/v2';
-
 export class Http {
   async get<TResponse>(url: string, data?: {}): Promise<TResponse> {
     return this.request(url, { method: METHODS.GET, data });
@@ -49,7 +47,7 @@ export class Http {
         }
       }
 
-      xhr.open(method, baseUrl + url);
+      xhr.open(method, url);
       xhr.withCredentials = true;
 
       xhr.onload = function () {

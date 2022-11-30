@@ -7,6 +7,7 @@ function removeAllChildrens(parent: Element) {
 }
 
 export function renderInDom(query: string | undefined, block: Block) {
+  // @ts-ignore
   const root = document.querySelector(query);
   if (root) {
     removeAllChildrens(root);

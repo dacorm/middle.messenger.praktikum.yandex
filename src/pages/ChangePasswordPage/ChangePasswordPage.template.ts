@@ -9,4 +9,4 @@ div.change
             input(data-props='repeatPassword')
         button.change__button(type='submit' form='changePassword') Сохранить
         div.change__push-back
-            a.change__push-back-button(href='~static/index.pug')`;
+            a.change__push-back-button <`;

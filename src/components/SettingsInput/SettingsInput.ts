@@ -1,11 +1,11 @@
-import { compile } from 'pug';
+import compile from '../../pug';
 import Block from '../../core/Block';
 import './SettingsInput.scss';
 import template from './SettingsInput.template';
 import { SettingsInputProps } from '../../shared/interfaces/SettingsInputProps';
 
 export default class SettingsInput extends Block implements SettingsInputProps {
-  protected props: SettingsInputProps;
+  props: SettingsInputProps;
 
   protected get proplist() {
     return [
